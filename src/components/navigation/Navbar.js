@@ -1,27 +1,31 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
+const style = {
+  redText: 'red-text text-accent-3'
+}
+
 class Navbar extends Component {
   render() {
     return (
-      <nav className="Navbar deep-orange accent-3">
+      <nav className="Navbar transparent z-depth-0">
         <div className="nav-wrapper">
-        <a className="brand-logo">Axiom BJJ</a>
+        <a className="brand-logo red-text text-accent-3">Axiom BJJ</a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li className="nav-link">
-              <Link to="/">Home</Link>
+              <Link to="/" className={style.redText}>Home</Link>
             </li>
             <li className="nav-link">
-              <Link to="/upcoming">Upcoming Events</Link>
+              <Link to="/upcoming" className={style.redText}>Upcoming Events</Link>
             </li>
             <li className="nav-link">
-              <Link to="/forum">Forum</Link>
+              <Link to="/forum" className={style.redText}>Forum</Link>
             </li>
             <li className="nav-link">
-              <Link to="/auth">Sign In/Up</Link>
+              <Link to="/auth" className={style.redText}>Sign In/Up</Link>
             </li>
             <li className="nav-link">
-              <Link to="/signout">Sign Out</Link>
+              <Link to="/signout" className={style.redText}>Sign Out</Link>
             </li>
           </ul>
         </div>
@@ -30,4 +34,4 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default Navbar

@@ -8,6 +8,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html { 
+  background: url(../src/images/bjj-1.svg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -16,3 +24,53 @@ code {
 .Navbar .brand-logo{
   padding-left: 30px !important;
 }
+
+.Home {
+  color: white;
+}
+
+.Home .wrapper{
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.Home .flex-container{
+  display: flex;
+}
+
+.Home .box{
+  height: 100%;
+  min-width: 100px;
+  width: 50%;
+  margin: 1%;
+}
+
+.Home .one{
+  flex-grow: 3;
+}
+
+.Home .podcast-list{
+  text-align: center;
+  flex-grow: 2;
+}
+
+.Home .article-list{
+  text-align: center;
+  flex-grow: 2;
+}
+
+.Home .h2{
+  font-size: 10px
+}
+
+.NewsItem{
+  width: 100%;
+  height: 75%;
+}
+
+.NewsItem .card{
+  background-color: rgb(0,0,0, 0.3);
+}
+
+
