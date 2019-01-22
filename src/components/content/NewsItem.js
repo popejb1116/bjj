@@ -1,8 +1,6 @@
 import React from 'react';
 import jreStock from '../../images/jre_stock2.jpg';
 import articleStock from '../../images/article_stock2.jpg';
-//import jreStock from '../../images/sample-1.jpg'
-
 
 const NewsItem = (props) => {
 
