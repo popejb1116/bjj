@@ -22,7 +22,7 @@ class UpcomingEvents extends Component {
 
     const upcomingEventList = this.state.upcomingEvents.map(item => {
       return (
-        <UpcomingEvent id={item.id} event={item}/>
+        <UpcomingEvent key={item.id} event={item}/>
       )
     })
 
