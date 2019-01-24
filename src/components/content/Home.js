@@ -25,7 +25,7 @@ class Home extends Component {
     let podcastList = this.state.newsItems.map(item => {
       if (item.type === 'podcast') {
         return (
-          <NewsItem id={item.id} item={item} />          
+          <NewsItem key={item.id} item={item} />          
         )
       }      
     })
@@ -33,7 +33,7 @@ class Home extends Component {
     let articleList = this.state.newsItems.map(item => {
       if (item.type==='article') {
         return (
-          <NewsItem id={item.id} item={item} />
+          <NewsItem key={item.id} item={item} />
         )
       }
     })

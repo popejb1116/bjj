@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 
 class SignUp extends Component {
 
@@ -6,7 +7,8 @@ class SignUp extends Component {
     email: '',
     firstName: '',
     lastName: '',
-    password: ''
+    password: '',
+    errorMessage: ''
   }
 
   handleChange = (event) => {
@@ -16,26 +18,66 @@ class SignUp extends Component {
     })
   }
 
+  failureClearForm = (response) => {
+    console.log('Clear Form')
+    const errorMessage = response.data.error.message
+    this.setState({
+      email: '',
+      firstName: '',
+      lastName: '',
+      password: '',
+      errorMessage: errorMessage
+    })
+  }
+
   handleSubmit = (event) => {
     event.preventDefault()
     console.log('Sign Up Submit')
+    event.preventDefault()
+    console.log('Sign In Submit')
+    axios({
+      method: 'post',
+      url: 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyDK5eSRyiJB4rdbvuKL0Q53qSQx7zwOSLE',
+      data: {
+        email: this.state.email,
+        password: this.state.password,
+        returnSecureToken: true
+      }
+    })
+    .then(res => {
+      console.log('.then')
+      console.log(res) 
+    })
+    .catch(err => {
+      console.log('.catch')
+      console.log(err.response)
+      this.failureClearForm(err.response)
+    })
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="SignIn">        
           <div className="input-field">
-            <input placeholder="Email Address" id="email" type="email" value={this.state.email} onChange={this.handleChange}/>
+            <label htmlFor='email'>Email Address</label>
+            <input id="email" type="email" value={this.state.email} onChange={this.handleChange}/>
           </div>
           <div className="input-field">
-            <input placeholder="First Name" id="firstName" type="text" value={this.state.firstName} onChange={this.handleChange}/>
+            <label htmlFor='firstName'>First Name</label>
+            <input id="firstName" type="text" value={this.state.firstName} onChange={this.handleChange}/>
           </div>
           <div className="input-field">
-            <input placeholder="Last Name" id="lastName" type="text" value={this.state.lastName} onChange={this.handleChange}/>
+            <label htmlFor='lastName'>Last Name</label>
+            <input id="lastName" type="text" value={this.state.lastName} onChange={this.handleChange}/>
           </div>
           <div className="input-field">
-            <input placeholder="Password" id="password" type="password" value={this.state.password} onChange={this.handleChange}/>
+            <label htmlFor='password'>Password</label>
+            <input id="password" type="password" value={this.state.password} onChange={this.handleChange}/>
           </div>
+          <div className="center">
+            <button className="btn-large">Sign Up!</button>
+          </div>
+          <div className="err">{this.state.errorMessage}</div> 
       </form>
     )
   }
