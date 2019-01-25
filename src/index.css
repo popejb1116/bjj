@@ -13,7 +13,7 @@ html {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: contain;
 }
 
 code {
@@ -130,14 +130,14 @@ code {
   margin: 0 auto;
 }
 
-.Auth .flex-container{
+.Auth .form-container{
   display: flex;
   height: 80%;
 }
 
 .Auth h3{
   text-align: center;
-  color: #ff1744;
+  color: white;
   padding-top: 5%;
 }
 
@@ -148,12 +148,11 @@ code {
 }
 
 .Auth label{
-  color: #ff1744;
+  color: white;
   font-size: 20px;
 }
 
-.Auth .btn-large{
-  border: 2px solid #ff1744;
+.Auth .btn-large {
   background: transparent;
   color: white;
   margin-top: 5%;
@@ -173,4 +172,15 @@ code {
   background-color: rgb(0,0,0, 0.6);
 }
 
+.Auth .error-container{
+  display: flex;
+  justify-content: center;
+}
 
+.Auth .auth-error{
+  background-color: #ff1744;
+  color: white;
+  text-align: center;
+  font-size: 40px;
+  width: 50%;
+}

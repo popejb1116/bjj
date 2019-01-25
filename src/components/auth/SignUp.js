@@ -75,7 +75,7 @@ class SignUp extends Component {
             <input id="password" type="password" value={this.state.password} onChange={this.handleChange}/>
           </div>
           <div className="center">
-            <button className="btn-large">Sign Up!</button>
+            <button className="btn-large z-depth-0">Sign Up!</button>
           </div>
           <div className="err">{this.state.errorMessage}</div> 
       </form>

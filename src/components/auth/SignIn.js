@@ -5,8 +5,7 @@ class SignIn extends Component {
 
   state = { 
     emailSignIn: '',
-    passwordSignIn: '',
-    errorMessage: ''
+    passwordSignIn: ''
   }
 
   handleChange = (event) => {
@@ -19,11 +18,11 @@ class SignIn extends Component {
   failureClearForm = (response) => {
     console.log('Clear Form')
     const errorMessage = response.data.error.message
-    console.log(errorMessage)
+    this.props.handleError(errorMessage)
+    //console.log(errorMessage)
     this.setState({
       emailSignIn: '',
-      passwordSignIn: '',
-      errorMessage: errorMessage
+      passwordSignIn: ''
     })
   }
 
@@ -61,7 +60,7 @@ class SignIn extends Component {
             <input id="passwordSignIn" type="password" value={this.state.passwordSignIn} onChange={this.handleChange}/>
           </div>
           <div className="center">
-            <button className="btn-large">Sign In</button>
+            <button className="btn-large z-depth-0">Sign In</button>
           </div> 
           <div className="err">{this.state.errorMessage}</div>
       </form>
