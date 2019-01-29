@@ -7,6 +7,7 @@ import Home from './components/content/Home'
 import UpcomingEvents from './components/content/UpcomingEvents'
 import Forum from './components/content/Forum'
 import Auth from './components/auth/Auth'
+import SignOut from './components/auth/SignOut'
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
             <Route path="/upcoming" component={UpcomingEvents} />
             <Route path="/forum" component={Forum} />
             <Route path="/auth" component={Auth} />
+            <Route path="/signout" component={SignOut} />
           </div>          
         </BrowserRouter>        
       </div>
