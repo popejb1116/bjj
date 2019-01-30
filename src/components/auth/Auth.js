@@ -91,6 +91,17 @@ class Auth extends Component {
 
     console.log('Auth render')
 
+    let errorElement = this.state.errorMessage ? 
+    (
+      <div className="error-container">
+        <div className="auth-error">
+          {this.state.errorMessage}
+        </div> 
+      </div>
+    ) : (
+      null
+    )
+
     return (
       <div className="Auth">
         <div className="wrapper">
@@ -106,13 +117,7 @@ class Auth extends Component {
             </div>
           </div>
         </div>    
-        
-        <div className="error-container">
-          <div className="auth-error">
-            {this.state.errorMessage}
-          </div> 
-        </div>
-        
+        {errorElement}
       </div>
     )
   }

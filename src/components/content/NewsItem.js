@@ -4,11 +4,20 @@ import articleStock from '../../images/article_stock2.jpg';
 
 const NewsItem = (props) => {
 
+  let {title, description } = props.item
+
   let displayPic
-  if (props.item.type ==='podcast') {
-    displayPic = jreStock
-  } else {
-    displayPic = articleStock
+  switch (props.item.type) {
+    case 'video':
+      displayPic = jreStock
+      break;
+
+    case 'article':
+      displayPic = articleStock
+      break;
+  
+    default:
+      break;
   }
 
   return (
@@ -16,13 +25,15 @@ const NewsItem = (props) => {
       <div className="card horizontal small">
         <div className="card-image">
           <img src={displayPic} />              
-        </div>            
+        </div>         
+
         <div className="card-stacked">
-          <span className="card-title">{props.item.title}</span>
           <div className="card-content">
-            <p>{props.item.description.slice(0,70)+'...'}</p>
+            <span className="card-title">{title}</span>
+            <p>{description.slice(0,70)+'...'}</p>
           </div>
-        </div>          
+        </div>
+
       </div>
     </div>
   )

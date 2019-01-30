@@ -16,12 +16,9 @@ class UpcomingEvent extends Component {
       displayIcon = bjjIcon
     }
 
-    const style = {
-    }
-
     return (
       <div className="UpcomingEvent">
-        <div className="card horizontal">
+        <div className="card horizontal small">
           <div className="card-image">
             <img src={displayIcon} />
           </div>

@@ -14,10 +14,7 @@ class Navbar extends Component {
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li className="nav-link">
               <Link to="/" className={style.redText}>Home</Link>
-            </li>
-            <li className="nav-link">
-              <Link to="/upcoming" className={style.redText}>Upcoming Events</Link>
-            </li>
+            </li>            
             <li className="nav-link">
               <Link to="/forum" className={style.redText}>Forum</Link>
             </li>
