@@ -17,16 +17,15 @@ class Auth extends Component {
     errorMessage: ''
   }
 
-  componentDidMount(){
-    console.log('/Auth cdm')
+  /* componentDidMount(){
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        console.log('user logged in')
+        console.log('Auth cdm: user')
       } else {
-        console.log('user NOT logged in')
+        console.log('Auth cdm: NO user')
       }
     })
-  }
+  } */
 
   handleChange = (event) => {
     const { id, value } = event.target
@@ -67,7 +66,7 @@ class Auth extends Component {
         break
     
       default:
-        let defaultError = 'Error not related to Firebase Auth'
+        const defaultError = 'Error not related to Firebase Auth'
         this.handleErrorAndClearForm(defaultError)
         break
     }
@@ -88,8 +87,6 @@ class Auth extends Component {
   }
 
   render(){
-
-    console.log('Auth render')
 
     let errorElement = this.state.errorMessage ? 
     (

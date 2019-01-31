@@ -5,15 +5,15 @@ const style = {
   redText: 'red-text text-accent-3'
 }
 
-class SignedInLinks extends Component {
+class SignedOutLinks extends Component {
   render() {
-    console.log('signed IN links hit')
+    console.log('signed OUT links hit')
     return (
       <li className="nav-link">
-        <Link to="/signout" className={style.redText}>Sign Out</Link>
+        <Link to="/auth" className={style.redText}>Sign In/Up</Link>
       </li>
     )
-  }
+  }  
 }
 
-export default SignedInLinks
+export default SignedOutLinks

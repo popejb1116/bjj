@@ -1,12 +1,36 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import SignedInLinks from './SignedInLinks';
+import SignedOutLinks from './SignedOutLinks';
+import firebase from '../../config/fbConfig'
 
 const style = {
   redText: 'red-text text-accent-3'
 }
 
-class Navbar extends Component {
+class Navbar extends Component {  
+
+  state = {
+    signedIn: false
+  }
+
+  componentDidMount(){
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({
+          signedIn: true
+        })
+        
+      } else {
+        this.setState({
+          signedIn: false
+        })
+      }      
+    })
+  }
+  
   render() {
+    let conditionalAuthLinks = this.state.signedIn ? (<SignedInLinks />) : (<SignedOutLinks />)
     return (
       <nav className="Navbar transparent z-depth-0">
         <div className="nav-wrapper">
@@ -18,12 +42,7 @@ class Navbar extends Component {
             <li className="nav-link">
               <Link to="/forum" className={style.redText}>Forum</Link>
             </li>
-            <li className="nav-link">
-              <Link to="/auth" className={style.redText}>Sign In/Up</Link>
-            </li>
-            <li className="nav-link">
-              <Link to="/signout" className={style.redText}>Sign Out</Link>
-            </li>
+            {conditionalAuthLinks}
           </ul>
         </div>
       </nav>
