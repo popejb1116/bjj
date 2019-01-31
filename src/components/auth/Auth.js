@@ -35,10 +35,13 @@ class Auth extends Component {
   }
 
   handleSubmit = (event) => {
+
     event.preventDefault()
     let { id } = event.target
 
     switch (id) {
+
+      // Handle user sign in
       case 'SignIn':
         firebase.auth().signInWithEmailAndPassword(
           this.state.email_SI,
@@ -52,12 +55,25 @@ class Auth extends Component {
         })
         break
 
+      // Handle user sign up, add profile to users collection
       case 'SignUp':
         firebase.auth().createUserWithEmailAndPassword(
           this.state.email_SU,
           this.state.password_SU
         )
+        .then((res) => {
+          // aggregate user profile data for .set()
+          const { uid } = res.user
+          const userProfile = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            createdAt: new Date()
+          }          
+          // This is returned to the outer Promise and picks up at the next .then
+          return firebase.firestore().collection('users').doc(uid).set(userProfile)
+        })
         .then(() => {
+          //console.log('New user profile added')
           this.props.history.push('/forum')
         })
         .catch(err => {
@@ -66,7 +82,7 @@ class Auth extends Component {
         break
     
       default:
-        const defaultError = 'Error not related to Firebase Auth'
+        const defaultError = 'Non-Firebase Error'
         this.handleErrorAndClearForm(defaultError)
         break
     }
@@ -102,18 +118,20 @@ class Auth extends Component {
     return (
       <div className="Auth">
         <div className="wrapper">
-
           <div className="form-container">
+
             <div className="box signin">
               <h3>Sign In</h3>          
               <SignIn formValues={this.state} handleChange={this.handleChange} handleSubmit={this.handleSubmit} handleError={this.handleError} />
             </div>
+
             <div className="box signup">
               <h3>Sign Up</h3>
               <SignUp formValues={this.state} handleChange={this.handleChange} handleSubmit={this.handleSubmit} handleError={this.handleError} />
             </div>
+
           </div>
-        </div>    
+        </div>
         {errorElement}
       </div>
     )

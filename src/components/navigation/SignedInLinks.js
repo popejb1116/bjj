@@ -7,7 +7,7 @@ const style = {
 
 class SignedInLinks extends Component {
   render() {
-    console.log('signed IN links hit')
+    //console.log('signed IN links hit')
     return (
       <li className="nav-link">
         <Link to="/signout" className={style.redText}>Sign Out</Link>
