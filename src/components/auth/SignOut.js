@@ -1,9 +1,10 @@
 import React from 'react'
-import firebase from '../../config/fbConfig'
+//import firebase from '../../config/fbConfig'
+import { auth } from '../../config/fbConfig'
 
 const SignOut = props => {
 
-  firebase.auth().signOut()
+  auth.signOut()
     .then(() => {
       props.history.push('/')
     })

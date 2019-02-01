@@ -1,7 +1,8 @@
 import React, { Component }from 'react';
 import SignIn from './SignIn'
 import SignUp from './SignUp'
-import firebase from '../../config/fbConfig'
+//import firebase from '../../config/fbConfig'
+import { auth, firestore } from '../../config/fbConfig'
 
 class Auth extends Component {
 
@@ -18,7 +19,7 @@ class Auth extends Component {
   }
 
   /* componentDidMount(){
-    firebase.auth().onAuthStateChanged(user => {
+    auth.onAuthStateChanged(user => {
       if (user) {
         console.log('Auth cdm: user')
       } else {
@@ -43,7 +44,7 @@ class Auth extends Component {
 
       // Handle user sign in
       case 'SignIn':
-        firebase.auth().signInWithEmailAndPassword(
+        auth.signInWithEmailAndPassword(
           this.state.email_SI,
           this.state.password_SI
         )
@@ -57,11 +58,11 @@ class Auth extends Component {
 
       // Handle user sign up, add profile to users collection
       case 'SignUp':
-        firebase.auth().createUserWithEmailAndPassword(
+        auth.createUserWithEmailAndPassword(
           this.state.email_SU,
           this.state.password_SU
         )
-        .then((res) => {
+        .then(res => {
           // aggregate user profile data for .set()
           const { uid } = res.user
           const userProfile = {
@@ -70,7 +71,7 @@ class Auth extends Component {
             createdAt: new Date()
           }          
           // This is returned to the outer Promise and picks up at the next .then
-          return firebase.firestore().collection('users').doc(uid).set(userProfile)
+          return firestore.collection('users').doc(uid).set(userProfile)
         })
         .then(() => {
           //console.log('New user profile added')
@@ -88,7 +89,7 @@ class Auth extends Component {
     }
   }
 
-  handleErrorAndClearForm = (error) => {
+  handleErrorAndClearForm = error => {
     this.setState({
       email_SI: '',
       password_SI: '',

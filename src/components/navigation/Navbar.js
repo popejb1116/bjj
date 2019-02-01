@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
-import firebase from '../../config/fbConfig'
+import { auth } from '../../config/fbConfig'
 
 const style = {
   redText: 'red-text text-accent-3'
@@ -15,12 +15,11 @@ class Navbar extends Component {
   }
 
   componentDidMount(){
-    firebase.auth().onAuthStateChanged(user => {
+    auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({
           signedIn: true
-        })
-        
+        })        
       } else {
         this.setState({
           signedIn: false
