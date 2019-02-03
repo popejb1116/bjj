@@ -26,17 +26,13 @@ class Forum extends Component {
 
   render(){
     let conditionalContent = this.state.signedIn ? (
-      <div>
-        <h1>Dat special shit</h1>
-      </div>
+      <h1>Dat special shit</h1>
     ) : (
-      <div>
-        <h1>Please Sign In or Sign Up to view the forum</h1>
-      </div>
+      <h1>Please Sign In or Sign Up to view the forum</h1>
     )
 
     return (
-      <div>
+      <div className="Forum">
         {conditionalContent}
       </div>
     )
