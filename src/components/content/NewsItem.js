@@ -1,23 +1,25 @@
-import React from 'react';
-import jreStock from '../../images/jre_stock2.jpg';
-import articleStock from '../../images/article_stock2.jpg';
+import React from 'react'
+import jreStock from '../../images/jre_stock2.jpg'
+import articleStock from '../../images/article_stock2.jpg'
 
-const NewsItem = (props) => {
 
-  let {title, description } = props.item
+const NewsItem = props => {
+
+  const {title, description, type } = props.item
 
   let displayPic
-  switch (props.item.type) {
+  switch (type) {
+
     case 'video':
       displayPic = jreStock
-      break;
+      break
 
     case 'article':
       displayPic = articleStock
-      break;
+      break
   
     default:
-      break;
+      break
   }
 
   return (
@@ -39,4 +41,4 @@ const NewsItem = (props) => {
   )
 }
 
-export default NewsItem;
+export default NewsItem
