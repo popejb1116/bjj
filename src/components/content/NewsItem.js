@@ -1,17 +1,16 @@
 import React from 'react'
-import jreStock from '../../images/jre_stock2.jpg'
-import articleStock from '../../images/article_stock2.jpg'
-
+import videoStock from '../../images/item-video.jpeg'
+import articleStock from '../../images/item-article.jpeg'
 
 const NewsItem = props => {
 
-  const {title, description, type } = props.item
+  const { title, description, type } = props.item
 
   let displayPic
   switch (type) {
 
     case 'video':
-      displayPic = jreStock
+      displayPic = videoStock
       break
 
     case 'article':

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import mmaIcon from '../../images/event-mma-2.jpg'
+import mmaIcon from '../../images/event-mma.jpeg'
 import boxingIcon from '../../images/event-boxing.jpeg'
-import bjjIcon from '../../images/event-bjj-2.jpg'
+import bjjIcon from '../../images/event-bjj.jpeg'
 
 class UpcomingEvent extends Component {
   render() {
