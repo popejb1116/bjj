@@ -95,6 +95,14 @@ img{
   height: 100%;
 }
 
+.Auth .signin-form{
+  padding: 8%
+}
+
+.Auth .input-field{
+  margin: 5%;
+}
+
 .Auth input:focus{
   color: #ff1744 !important;
   border-bottom: 1px solid #ff1744 !important;
@@ -120,7 +128,7 @@ img{
 .Auth h3{
   text-align: center;
   color: white;
-  padding-top: 5%;
+  padding-top: 2%;
 }
 
 .Auth form{
@@ -137,20 +145,44 @@ img{
 .Auth .btn-large {
   background: transparent;
   color: white;
-  margin-top: 5%;
+  font-size: 40px;
+  text-transform: capitalize;
 }
 
 .Auth .btn-large:hover{
   background-color: #ff1744;
   color: white;
-  margin-top: 5%;
+}
+
+.Auth .signin-form .signup-block{
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 20;
+  margin-left: 5%;
+}
+
+.Auth .signin-form .center{
+  padding: 5%;
+}
+
+.Auth .btn {
+  background: transparent;
+  color: white;
+  text-transform: capitalize;
+  padding-left: 8px;
+  padding-right: 8px;  
+}
+
+.Auth .btn:hover{
+  background-color: #ff1744;
+  color: white;
 }
 
 .Auth .box{
   min-width: 100px;
   flex-grow: 1;
-  width: 50%;
-  margin: 1%;
+  margin: 1% 10%;
   background-color: rgb(0,0,0, 0.6);
 }
 
