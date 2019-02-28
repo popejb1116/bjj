@@ -1,23 +1,20 @@
 import React, { Component }from 'react';
 import SignIn from './SignIn'
 import SignUp from './SignUp'
-//import firebase from '../../config/fbConfig'
-//import { auth, firestore } from '../../config/fbConfig'
 
 class Auth extends Component {
 
-  render(){
+  state = {
+    errorMessage: ''
+  }
 
-    /* let errorElement = this.state.errorMessage ? 
-    (
-      <div className="error-container">
-        <div className="auth-error">
-          {this.state.errorMessage}
-        </div> 
-      </div>
-    ) : (
-      null
-    ) */
+  handleError = error => {
+    this.setState({
+      errorMessage: error.message
+    })
+  }
+
+  render(){
 
     return (
       <div className="Auth">
@@ -25,7 +22,7 @@ class Auth extends Component {
           <div className="form-container">
 
             <div className="box signin">
-              <SignIn history={this.props.history} />
+              <SignIn history={this.props.history} handleError={(error) => {this.handleError(error)}}/>
             </div>
 
             {/* <div className="box signup">
@@ -35,7 +32,7 @@ class Auth extends Component {
  */}
           </div>
         </div>
-        {/*errorElement*/}
+        
       </div>
     )
   }
