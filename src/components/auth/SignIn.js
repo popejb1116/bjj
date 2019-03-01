@@ -70,7 +70,11 @@ class SignIn extends React.Component {
 
             <div className="signup-block">
               <div className="signup-message">Don't have an account?</div>
-              <div className="btn z-depth-0">Sign Up</div>
+              <div 
+                className="btn z-depth-0" 
+                onClick={() => this.props.handleDisplayMode('signup')}>
+                Sign Up
+              </div>
             </div>          
         </form>
       </Fragment>

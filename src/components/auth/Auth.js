@@ -1,11 +1,13 @@
-import React, { Component }from 'react';
+import React, { Component, Fragment }from 'react';
 import SignIn from './SignIn'
-import SignUp from './SignUp'
+//import SignUp from './SignUp'
+import SU from './SU'
 
 class Auth extends Component {
 
   state = {
-    errorMessage: ''
+    errorMessage: '',
+    displayMode: 'signin'
   }
 
   handleError = error => {
@@ -14,26 +16,38 @@ class Auth extends Component {
     })
   }
 
+  handleDisplayMode = mode => {
+    console.log(mode)
+    this.setState({
+      displayMode: mode
+    })
+  }
+
   render(){
 
-    return (
+    let display = this.state.displayMode === 'signin' ? 
+    (
       <div className="Auth">
         <div className="wrapper">
           <div className="form-container">
-
             <div className="box signin">
-              <SignIn history={this.props.history} handleError={(error) => {this.handleError(error)}}/>
+              <SignIn 
+                history={this.props.history} 
+                handleDisplayMode={mode => {this.handleDisplayMode(mode)}}/>
             </div>
-
-            {/* <div className="box signup">
-              <h3>Sign Up</h3>
-              <SignUp formValues={this.state} handleChange={this.handleChange} handleSubmit={this.handleSubmit} handleError={this.handleError} />
-            </div>
- */}
           </div>
         </div>
-        
       </div>
+    ) 
+    : 
+    (
+      <SU />
+    )
+
+    return (
+      <Fragment>
+        {display}
+      </Fragment>
     )
   }
 }
