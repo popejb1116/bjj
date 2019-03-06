@@ -6,7 +6,8 @@ import ReviewAndSubmit from './ReviewAndSubmit'
 import styled from 'styled-components'
 import { auth } from '../../../config/fbConfig'
 
-const StyledModal = styled.div`
+const StyledModal = styled.div`  
+  
   #signup-modal{
     background-color: rgb(0,0,0, 0.6);
   }
@@ -90,12 +91,11 @@ class SignUp extends Component {
     switch (mode) {
       case 'credentials': return <CrendentialsForm state={this.state} handleChange={this.handleChange} handleMode={this.handleMode} />
       case 'profile': return <ProfileForm state={this.state} handleChange={this.handleChange} handleMode={this.handleMode} />
-      case 'review': return <ReviewAndSubmit state={this.state} handleSubmit={this.handleSubmit} />
+      case 'review': return <ReviewAndSubmit state={this.state} handleMode={this.handleMode} handleSubmit={this.handleSubmit} />
       default: break
     }   
   }
   let display = determineDisplay(this.state.displayMode)
-  //console.log(display)
 
     return (
       <StyledModal>
