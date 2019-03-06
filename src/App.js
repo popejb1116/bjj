@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 //import './App.css'
+import 'materialize-css/dist/css/materialize.min.css'
 import { BrowserRouter, Route} from 'react-router-dom'
 import Navbar from './components/navigation/Navbar'
 
 import Home from './components/content/Home'
 import Forum from './components/content/Forum'
-import Auth from './components/auth/Auth'
+//import Auth from './components/auth/Auth'
+import SignIn from './components/auth/SignIn'
+import SignUp from './components/auth/signUp/SignUp'
 import SignOut from './components/auth/SignOut'
 
 class App extends Component {
@@ -17,7 +20,9 @@ class App extends Component {
             <Navbar />
             <Route exact path="/" component={Home} />
             <Route path="/forum" component={Forum} />
-            <Route path="/auth" component={Auth} />
+            {/* <Route path="/auth" component={Auth} /> */}
+            <Route path="/signin" component={SignIn} />
+            <Route path="/signup" component={SignUp} />
             <Route path="/signout" component={SignOut} />
           </div>          
         </BrowserRouter>        

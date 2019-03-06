@@ -10,7 +10,7 @@ class SignedOutLinks extends Component {
     //console.log('signed OUT links hit')
     return (
       <li className="nav-link">
-        <Link to="/auth" className={style.redText}>Sign In/Up</Link>
+        <Link to="/signin" className={style.redText}>Sign In/Up</Link>
       </li>
     )
   }  
