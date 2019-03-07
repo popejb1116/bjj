@@ -10,6 +10,7 @@ const StyledModal = styled.div`
   
   #signup-modal{
     background-color: rgb(0,0,0, 0.6);
+    min-height: 600px;
   }
 `
 
