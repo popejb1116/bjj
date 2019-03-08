@@ -1,7 +1,8 @@
 import React, {Fragment} from 'react'
 import { auth } from '../../config/fbConfig'
 import { Link } from 'react-router-dom'
-import { Form, FormHeader, FormBody, FormFooter, FormNavAndAction, FormCancel} from '../auth/StyledComponents'
+import { Form, FormHeader, FormBody, FormFooter, FormNavAndAction, FormCancel, StyledErrorModal} from '../auth/StyledComponents'
+import M from 'materialize-css'
 
 class SignIn extends React.Component {
 
@@ -9,6 +10,20 @@ class SignIn extends React.Component {
     email: '',
     password: '',
     errorMessage: ''
+  }
+
+  componentDidMount(){
+    const elem = document.getElementById('error-modal')
+    const options = {
+      opacity: 0
+    }
+    M.Modal.init(elem, options)
+  }
+
+  componentWillUnmount(){
+    const elem = document.getElementById('error-modal')
+    const instance = M.Modal.getInstance(elem)
+    instance.destroy()
   }
 
   handleChange = event => {
@@ -37,20 +52,33 @@ class SignIn extends React.Component {
       email: '',
       password: '',
       errorMessage: error.message
+    },
+    () =>{
+      console.log('modal should open now')
+      const elem = document.getElementById('error-modal')
+      const instance = M.Modal.getInstance(elem)
+      instance.open()
     })
   }
-
 
   render(){
 
     return (
       <Fragment>
-        <Form>
 
+        <StyledErrorModal>
+          <div id="error-modal" className="modal">
+            <div className="modal-content">
+              {this.state.errorMessage}
+              <a className="modal-close btn-flat">Close</a>
+            </div>
+          </div>
+        </StyledErrorModal>
+
+        <Form>
           <FormHeader>
             Quote of the day...
           </FormHeader>
-
           <FormBody>
             <form >
               <div className="input-field">
@@ -69,16 +97,14 @@ class SignIn extends React.Component {
               </div>
             </form>   
           </FormBody>
-
           <FormFooter> 
             <FormNavAndAction>
-              <a className="btn-large z-depth-0">Sign In</a>     
+              <a className="btn-large z-depth-0" onClick={this.handleSubmit}>Sign In</a>     
             </FormNavAndAction>   
             <FormCancel>
               <a className="btn z-depth-0" href="/">Cancel</a>
             </FormCancel>       
           </FormFooter>
-
         </Form>
       </Fragment>
     )

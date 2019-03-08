@@ -1,18 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import M from 'materialize-css'
 import CrendentialsForm from './CredentialsForm'
 import ProfileForm from './ProfileForm'
 import ReviewAndSubmit from './ReviewAndSubmit'
-import styled from 'styled-components'
 import { auth } from '../../../config/fbConfig'
-
-const StyledModal = styled.div`  
-  
-  #signup-modal{
-    background-color: rgb(0,0,0, 0.6);
-    min-height: 600px;
-  }
-`
 
 class SignUp extends Component {
 
@@ -29,22 +19,6 @@ class SignUp extends Component {
 
     errorMessage: '',
     displayMode: 'credentials'
-  }
-
-  componentDidMount(){
-    const elems = document.getElementById('signup-modal')
-    const options = {
-      opacity: 0,
-      dismissible: false
-    }
-    const instance = M.Modal.init(elems, options)
-    instance.open()
-  }
-
-  componentWillUnmount(){
-    const elems = document.getElementById('signup-modal')
-    const instance = M.Modal.getInstance(elems)
-    instance.destroy()
   }
 
   handleChange = event => {
@@ -78,12 +52,17 @@ class SignUp extends Component {
     const { email, password } = this.state    
     auth.createUserWithEmailAndPassword(email, password)
     .then(user => {
-      console.log('Sign Up!!!!!!!!')
+      console.log(user)
       this.props.history.push('/forum')
     })
     .catch(error => {
-      console.log('Sign Up ERROR')
+      //console.log('Sign Up ERROR')
+      this.handleError(error)
     })
+  }
+
+  handleError = error => {
+    console.log(error.message)
   }
 
   render(){
@@ -99,11 +78,9 @@ class SignUp extends Component {
   let display = determineDisplay(this.state.displayMode)
 
     return (
-      <StyledModal>
-        <div id="signup-modal" className="modal z-depth-0">
-          {display}
-        </div>      
-      </StyledModal>
+      <Fragment>
+        {display}
+      </Fragment>
     )
   }  
 }
