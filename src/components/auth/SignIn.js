@@ -1,7 +1,6 @@
 import React, {Fragment} from 'react'
 import { auth } from '../../config/fbConfig'
 import { Link } from 'react-router-dom'
-//import { Form, FormHeader, FormBody, FormFooter, FormNavAndAction, FormCancel, StyledErrorModal} from '../auth/StyledComponents'
 import { Form, FormHeader, FormBody, FormFooter, FormNavAndAction, FormCancel, StyledErrorModal} from './StyledComponents'
 import M from 'materialize-css'
 
@@ -95,6 +94,7 @@ class SignIn extends React.Component {
                 <div>Don't have an account?</div>
                 <Link to="/signup" className="signup-link btn z-depth-0">Sign Up</Link>
               </div>
+              
             </form>   
           </FormBody>
           <FormFooter> 

@@ -3,10 +3,7 @@ import { Link } from 'react-router-dom'
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
 import { auth } from '../../config/fbConfig'
-
-const style = {
-  redText: 'red-text text-accent-3'
-}
+import { NavBar, NavLogo, NavLinks} from './StyledComponents'
 
 class Navbar extends Component {  
 
@@ -31,6 +28,42 @@ class Navbar extends Component {
   render() {
     let conditionalAuthLinks = this.state.signedIn ? (<SignedInLinks />) : (<SignedOutLinks />)
     return (
+      <NavBar className="z-depth-0">        
+        <NavLogo className="brand-logo">Axiom BJJ</NavLogo>
+
+          <NavLinks id="nav-mobile" className="right hide-on-med-and-down">
+            <li><Link to="/">Home</Link></li>  
+            <li><Link to="/forum">Forum</Link></li>
+            {conditionalAuthLinks}
+          </NavLinks>
+        
+      </NavBar>
+    )
+  }
+}
+
+export default Navbar
+
+/*
+
+/* NAVBAR
+.Navbar .brand-logo{
+  padding-left: 30px !important;
+}
+
+.Forum{  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Forum h1{
+  text-align: center;
+  color: #ff1744;
+}
+
+
+return (
       <nav className="Navbar transparent z-depth-0">
         <div className="nav-wrapper">
         <a className="brand-logo red-text text-accent-3">Axiom BJJ</a>
@@ -46,7 +79,5 @@ class Navbar extends Component {
         </div>
       </nav>
     )
-  }
-}
 
-export default Navbar
+*/

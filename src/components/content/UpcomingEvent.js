@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import mmaIcon from '../../images/event-mma.jpeg'
 import boxingIcon from '../../images/event-boxing.jpeg'
 import bjjIcon from '../../images/event-bjj.jpeg'
+import { Card } from './StyledComponents'
 
 class UpcomingEvent extends Component {
   render() {
@@ -17,7 +18,7 @@ class UpcomingEvent extends Component {
     }
 
     return (
-      <div className="UpcomingEvent">
+      <Card>
         <div className="card horizontal small">
           <div className="card-image">
             <img src={displayIcon} />
@@ -29,7 +30,7 @@ class UpcomingEvent extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </Card>
     )
   }
 }
