@@ -20,7 +20,6 @@ class App extends Component {
             <Navbar />
             <Route exact path="/" component={Home} />
             <Route path="/forum" component={Forum} />
-            {/* <Route path="/auth" component={Auth} /> */}
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />
             <Route path="/signout" component={SignOut} />

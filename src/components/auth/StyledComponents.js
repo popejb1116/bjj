@@ -7,7 +7,7 @@ export const Form = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin: 2rem 6rem;
+  margin: 0rem 6rem;
   min-height: 650px;
 
   input, label{
@@ -27,13 +27,13 @@ export const FormHeader = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 6rem;
+  margin-top: 4rem;
   font-size: 2rem;  
 `
 // TODO: ADJUST PADDING FOR MOBILE
 export const FormBody = styled.div`
   width: 100%;
-  padding: 0rem 15rem;
+  padding: 0rem 12rem;
   color: white;
   font-size: 1.5rem;
 

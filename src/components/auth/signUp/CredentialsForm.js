@@ -2,6 +2,20 @@ import React, { Fragment } from 'react'
 import { Form, FormHeader, FormBody, FormFooter, FormNavAndAction, FormCancel} from '../StyledComponents'
 
 const CredentialsForm = props => {
+
+  const {email, password, confirmPassword} = props.state
+
+  let focusEmailLabel, focusPasswordLabel, focusConfirmLabel
+  if (email !== '') {
+    focusEmailLabel = "active"
+  }
+  if (password !== '') {
+    focusPasswordLabel = "active"
+  }
+  if (confirmPassword !== '') {
+    focusConfirmLabel = "active"
+  }
+
   return (
     <Fragment>
       <Form>
@@ -12,17 +26,28 @@ const CredentialsForm = props => {
 
         <FormBody>
           <form>
+            {/* FORMAT EXAMPLE */}
             <div className="input-field">
-              <label htmlFor='email'>Email Address</label>
-              <input id="email" type="email" value={props.state.email} onChange={props.handleChange}/>
-            </div>          
+              <label 
+                htmlFor='email' 
+                className={focusEmailLabel}
+                >Email Address
+              </label>
+              <input 
+                id="email" 
+                type="email" 
+                value={email} 
+                onChange={props.handleChange}
+              />
+            </div>         
+
             <div className="input-field">
-              <label htmlFor='password'>Password</label>
-              <input id="password" type="password" value={props.state.password} onChange={props.handleChange}/>
+              <label htmlFor='password' className={focusPasswordLabel}>Password</label>
+              <input id="password" type="password" value={password} onChange={props.handleChange}/>
             </div>
             <div className="input-field">
-              <label htmlFor='confirmPassword'>Confirm Password</label>
-              <input id="confirmPassword" type="password" value={props.state.confirmPassword} onChange={props.handleChange}/>
+              <label htmlFor='confirmPassword' className={focusConfirmLabel}>Confirm Password</label>
+              <input id="confirmPassword" type="password" value={confirmPassword} onChange={props.handleChange}/>
             </div>
           </form>
         </FormBody>

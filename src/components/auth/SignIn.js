@@ -1,7 +1,8 @@
 import React, {Fragment} from 'react'
 import { auth } from '../../config/fbConfig'
 import { Link } from 'react-router-dom'
-import { Form, FormHeader, FormBody, FormFooter, FormNavAndAction, FormCancel, StyledErrorModal} from '../auth/StyledComponents'
+//import { Form, FormHeader, FormBody, FormFooter, FormNavAndAction, FormCancel, StyledErrorModal} from '../auth/StyledComponents'
+import { Form, FormHeader, FormBody, FormFooter, FormNavAndAction, FormCancel, StyledErrorModal} from './StyledComponents'
 import M from 'materialize-css'
 
 class SignIn extends React.Component {
@@ -54,7 +55,6 @@ class SignIn extends React.Component {
       errorMessage: error.message
     },
     () =>{
-      console.log('modal should open now')
       const elem = document.getElementById('error-modal')
       const instance = M.Modal.getInstance(elem)
       instance.open()

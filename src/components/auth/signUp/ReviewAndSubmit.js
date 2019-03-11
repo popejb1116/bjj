@@ -3,6 +3,8 @@ import { Form, FormHeader, FormBody, FormFooter, FormNavAndAction, FormCancel} f
 
 
 const ReviewAndSubmit = props => {
+  let {firstName, lastName, email, primaryDiscipline, yearsExperience} = props.state
+  
   return (
     <Fragment>
       <Form>
@@ -12,11 +14,11 @@ const ReviewAndSubmit = props => {
         </FormHeader>
         
         <FormBody>
-          <p>First Name : {props.state.firstName}</p>
-          <p>Last Name : {props.state.lastName}</p>
-          <p>Email : {props.state.email}</p>
-          <p>Primary Discipline : {props.state.primaryDiscipline}</p>
-          <p>Years Of Experience : {props.state.yearsExperience}</p>
+          <p>First Name : {firstName}</p>
+          <p>Last Name : {lastName}</p>
+          <p>Email : {email}</p>
+          <p>Primary Discipline : {primaryDiscipline}</p>
+          <p>Years Of Experience : {yearsExperience}</p>
         </FormBody>
 
         <FormFooter>
