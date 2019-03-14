@@ -8,16 +8,27 @@ export const ListHeader = styled.div`
   text-align: center;
 `
 
-export const Card = styled.div`
+export const ListBody = styled.div`
+`
+
+export const Card = styled.div`   
+
    .card {
       background-color: rgb(0,0,0, 0.6);
    }
+   .card:hover{            
+      .card-content{
+      color: white;    
+      background-color: #ff1744 !important;  
+      font-size: 1rem;
+      }
+   }
+
   .card-title{
       color: #ff1744 !important;
       font-size: 1.5rem;
       font-weight: bold;
   }
-
   .card-content{
       color: white;      
       font-size: 1rem;
