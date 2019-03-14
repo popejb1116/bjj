@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Form, FormHeader, FormBody, FormFooter, FormNavAndAction, FormCancel} from '../StyledComponents'
+import { Form, FormHeader, FormBody, FormFooter, FormBodyAnchor, FormButton, FormCancel } from '../StyledComponents'
 
 const CredentialsForm = props => {
 
@@ -20,13 +20,9 @@ const CredentialsForm = props => {
     <Fragment>
       <Form>
 
-        <FormHeader>
-          Great! Let's Get Your Authentication Info.
-        </FormHeader>
+        <FormHeader>Great! Let's Get Your Authentication Info.</FormHeader>
 
         <FormBody>
-          <form>
-            {/* FORMAT EXAMPLE */}
             <div className="input-field">
               <label 
                 htmlFor='email' 
@@ -49,19 +45,21 @@ const CredentialsForm = props => {
               <label htmlFor='confirmPassword' className={focusConfirmLabel}>Confirm Password</label>
               <input id="confirmPassword" type="password" value={confirmPassword} onChange={props.handleChange}/>
             </div>
-          </form>
+
+            <FormBodyAnchor>
+               <FormButton>
+                  <button className="btn-large z-depth-0" onClick={() => props.handleMode('profile')}>Onward</button>                  
+               </FormButton>
+            </FormBodyAnchor>
         </FormBody>
 
-        <FormFooter> 
-          <FormNavAndAction>
-            <a className="btn-large z-depth-0" onClick={() => props.handleMode('profile')}>Onward</a>
-          </FormNavAndAction>   
+        <FormFooter>
           <FormCancel>
             <a className="btn z-depth-0" href="/signin">Cancel</a>
           </FormCancel>       
         </FormFooter>
 
-      </Form>      
+      </Form>
     </Fragment>
   )
 }

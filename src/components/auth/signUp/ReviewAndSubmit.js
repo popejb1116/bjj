@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Form, FormHeader, FormBody, FormFooter, FormNavAndAction, FormCancel} from '../StyledComponents'
+import { Form, FormHeader, FormBody, FormFooter, FormBodyAnchor, FormButton, FormCancel } from '../StyledComponents'
 
 
 const ReviewAndSubmit = props => {
@@ -19,14 +19,16 @@ const ReviewAndSubmit = props => {
           <p>Email : {email}</p>
           <p>Primary Discipline : {primaryDiscipline}</p>
           <p>Years Of Experience : {yearsExperience}</p>
+
+          <FormBodyAnchor>
+             <FormButton>
+               <button className="btn-large z-depth-0" onClick={() => props.handleMode('profile')}>Nope??</button>
+               <button className="btn-large z-depth-0" onClick={props.handleSubmit}>Submit</button> 
+             </FormButton>
+          </FormBodyAnchor>
         </FormBody>
 
         <FormFooter>
-          <FormNavAndAction>
-            <a className="btn-large z-depth-0" onClick={() => props.handleMode('profile')}>Nope??</a>
-            <a className="btn-large z-depth-0" onClick={props.handleSubmit}>Submit</a>        
-          </FormNavAndAction>      
-
           <FormCancel>
             <a 
               className="modal-close btn z-depth-0"

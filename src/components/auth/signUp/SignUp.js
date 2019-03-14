@@ -123,16 +123,20 @@ class SignUp extends Component {
 
     return (
       <Fragment>
-        <StyledErrorModal>
-          <div id="error-modal" className="modal">
-            <div className="modal-content">
-              {this.state.errorMessage}
-              <a className="modal-close btn-flat">Close</a>
+         <StyledErrorModal>
+            <div id="error-modal" className="modal">
+               <div className="modal-content">
+               {this.state.errorMessage}
+               <a className="modal-close btn-flat">Close</a>
+               </div>
             </div>
-          </div>
-        </StyledErrorModal>
+         </StyledErrorModal>
 
-        {display}
+         <div className="row">
+            <div className="col s12 m8 offset-m2 l8 offset-l2">
+               {display}
+            </div>
+         </div>                
       </Fragment>
     )
   }  

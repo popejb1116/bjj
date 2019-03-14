@@ -26,24 +26,18 @@ class Home extends Component {
       )
     })
 
-    return(
-       
-      <div className="row">
-         
+    return(       
+      <div className="row">         
          <div className="col s10 offset-s1 m8 offset-m2 l3 offset-l2">
             <ListHeader>News</ListHeader>
             {newsItemList}   
          </div>
-
          <div className="col s10 offset-s1 m8 offset-m2 l3 offset-l2">
             <ListHeader>Events</ListHeader>
             {upcomingEventList}
          </div>
-      </div>
-       
+      </div>       
     )
-
-    
   }
 }
 

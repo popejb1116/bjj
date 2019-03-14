@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
-import { Form, FormHeader, FormBody, RadioGroup, RadioTitle, RadioOptions, FormFooter, FormNavAndAction, FormCancel} from '../StyledComponents'
+import { RadioGroup, RadioTitle, RadioOptions} from '../StyledComponents'
+import { Form, FormHeader, FormBody, FormFooter, FormBodyAnchor, FormButton, FormCancel } from '../StyledComponents'
 
 const ProfileForm = props => {
 
@@ -21,7 +22,7 @@ const ProfileForm = props => {
         </FormHeader>
 
         <FormBody>
-          <form>
+          
             <div className="input-field">
               <label htmlFor='firstName' className={focusFirstNameLabel}>First Name</label>
               <input id="firstName" type="text" value={firstName} onChange={props.handleChange}/>
@@ -112,15 +113,18 @@ const ProfileForm = props => {
                 <span>10+</span>
               </label>
               </RadioOptions>
-            </RadioGroup>            
-          </form>
+            </RadioGroup>     
+
+            <FormBodyAnchor>
+               <FormButton>
+                  <button className="btn-large z-depth-0" onClick={() => props.handleMode('credentials')}>Go Back</button>
+                  <button className="btn-large z-depth-0" onClick={() => props.handleMode('review')}>Onward</button>   
+               </FormButton>   
+            </FormBodyAnchor>       
+          
         </FormBody>
 
         <FormFooter>
-          <FormNavAndAction>
-            <a className="btn-large z-depth-0" onClick={() => props.handleMode('credentials')}>Go Back</a>
-            <a className="btn-large z-depth-0" onClick={() => props.handleMode('review')}>Onward</a>
-          </FormNavAndAction>
           <FormCancel>
             <a className="btn z-depth-0" href="/signin">Cancel</a>
           </FormCancel>      
