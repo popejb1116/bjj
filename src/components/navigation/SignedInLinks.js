@@ -5,7 +5,7 @@ class SignedInLinks extends Component {
   render() {
     return (
       <li>
-        <Link to="/signout">Sign Out</Link>
+        <Link to="/signout" onClick={this.props.handleSidenavClose}>Sign Out</Link>
       </li>
     )
   }
