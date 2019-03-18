@@ -13,6 +13,7 @@ class Navbar extends Component {
   }
 
   componentDidMount(){
+     /* AUTH STATUS CHECK */
     auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({
@@ -25,6 +26,7 @@ class Navbar extends Component {
       }      
     })
 
+    /* INIT MOBILE SIDENAV */
     const elem = document.getElementById("slide-out")
     M.Sidenav.init(elem)
   }
@@ -34,13 +36,24 @@ class Navbar extends Component {
       const instance = M.Sidenav.getInstance(elem)
       instance.destroy()
    }
+
+   handleSidenavClose = () =>{
+      const elem = document.getElementById("slide-out")
+      const instance = M.Sidenav.getInstance(elem)
+      instance.close()
+   }
   
   render() {
-    let conditionalAuthLinks = this.state.signedIn ? (<SignedInLinks />) : (<SignedOutLinks />)
-    return (
+   let conditionalAuthLinks = this.state.signedIn ? 
+      (<SignedInLinks handleSidenavClose = {this.handleSidenavClose} />) 
+   : 
+      (<SignedOutLinks handleSidenavClose = {this.handleSidenavClose} />)
+   
+   return (
       <NavBar className="z-depth-0">        
-        <NavLogo className="brand-logo">Axiom BJJ</NavLogo>      
-        
+         <NavLogo className="brand-logo">Axiom BJJ</NavLogo>      
+         
+         {/* MOBILE SIDENAV */}
          <a data-target="slide-out" className="sidenav-trigger">
             <i className="material-icons hide-on-large-only">menu</i>
          </a>
@@ -52,13 +65,14 @@ class Navbar extends Component {
          </NavLinks>
 
          <MobileNavLinks id="slide-out" className="sidenav">
-            <li><Link to="/">Home</Link></li>  
-            <li><Link to="/forum">Forum</Link></li>
+            <li><Link to="/" onClick={this.handleSidenavClose}>Home</Link></li>  
+            <li><Link to="/forum" onClick={this.handleSidenavClose}>Forum</Link></li>
             {conditionalAuthLinks}
          </MobileNavLinks>            
-        
+         
       </NavBar>
-    )
+   )
+
   }
 }
 

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { StyledErrorModal, Form, FormHeader, FormBody, FormInlineNote, FormBodyAnchor, FormButton, FormFooter, FormCancel} from './StyledComponents'
 import M from 'materialize-css'
 
+
 class SignIn extends React.Component {
 
   state = {
@@ -17,7 +18,7 @@ class SignIn extends React.Component {
     const options = {
       opacity: 0
     }
-    M.Modal.init(elem, options)
+    M.Modal.init(elem, options)    
   }
 
   componentWillUnmount(){

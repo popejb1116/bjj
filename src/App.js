@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import 'materialize-css/dist/js/materialize'
+//import 'materialize-css/dist/js/materialize'
 import 'materialize-css/dist/css/materialize.min.css'
 import { BrowserRouter, Route} from 'react-router-dom'
 import Navbar from './components/navigation/Navbar'

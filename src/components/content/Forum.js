@@ -20,8 +20,14 @@ class Forum extends Component {
       }      
     })
     
-    // this unsubscribes from async events which update after a component unmounts
+    // THIS UNSUBSCRIBES FROM ASYNC EVENTS WHICH UPDATE AFTER A COMPONENT UNMOUNTS
     unsubscribe()
+
+    //INIT MOBILE
+  }
+
+  componentWillUnmount(){
+
   }
 
   render(){
