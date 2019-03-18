@@ -25,7 +25,6 @@ export const Form = styled.div`
    justify-content: space-between;
    align-items: center;   
    background-color: rgb(0,0,0, 0.6);
-   min-height: 700px;
 `
 
 export const FormHeader = styled.div`
@@ -104,7 +103,7 @@ export const FormButton = styled.div`
 
 export const FormFooter = styled.div`
    width: 75%;
-   margin-bottom: 4rem;   
+   margin-bottom: 2.5rem;   
 
   .btn {
     color: white;
