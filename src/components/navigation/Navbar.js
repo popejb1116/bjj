@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
 import { auth } from '../../config/fbConfig'
-import { NavBar, NavLogo, NavLinks} from './StyledComponents'
+import { NavBar, NavLogo, NavLinks, MobileNavLinks} from './StyledComponents'
+import M from 'materialize-css'
 
 class Navbar extends Component {  
 
@@ -23,19 +24,38 @@ class Navbar extends Component {
         })
       }      
     })
+
+    const elem = document.getElementById("slide-out")
+    M.Sidenav.init(elem)
   }
+
+   componentWillUnmount(){
+      const elem = document.getElementById("slide-out")
+      const instance = M.Sidenav.getInstance(elem)
+      instance.destroy()
+   }
   
   render() {
     let conditionalAuthLinks = this.state.signedIn ? (<SignedInLinks />) : (<SignedOutLinks />)
     return (
       <NavBar className="z-depth-0">        
-        <NavLogo className="brand-logo">Axiom BJJ</NavLogo>
+        <NavLogo className="brand-logo">Axiom BJJ</NavLogo>      
+        
+         <a data-target="slide-out" className="sidenav-trigger">
+            <i className="material-icons hide-on-large-only">menu</i>
+         </a>
 
-          <NavLinks id="nav-mobile" className="right hide-on-med-and-down">
+         <NavLinks className="right hide-on-med-and-down">
             <li><Link to="/">Home</Link></li>  
             <li><Link to="/forum">Forum</Link></li>
             {conditionalAuthLinks}
-          </NavLinks>
+         </NavLinks>
+
+         <MobileNavLinks id="slide-out" className="sidenav">
+            <li><Link to="/">Home</Link></li>  
+            <li><Link to="/forum">Forum</Link></li>
+            {conditionalAuthLinks}
+         </MobileNavLinks>            
         
       </NavBar>
     )
