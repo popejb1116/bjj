@@ -1,6 +1,6 @@
 import React from 'react'
-import videoStock from '../../images/item-video.jpeg'
-import articleStock from '../../images/item-article.jpeg'
+import videoStock from '../../images/item-video-w.png'
+import articleStock from '../../images/item-article-s.png'
 import { Card } from './StyledComponents'
 
 const NewsItem = props => {
@@ -23,19 +23,18 @@ const NewsItem = props => {
   }
 
   return (
-    <Card >
-      <div className="card horizontal small">
+    <Card>
+      <div className="card">
         <div className="card-image">
-          <img src={displayPic} />              
-        </div>
-        <div className="card-stacked">
-          <div className="card-content">
-            <span className="card-title">{title}</span>
+          <img src={displayPic} />  
+          <span className="card-title">{title}</span>            
+        </div>        
+          <div className="card-content">            
             <p>{description.slice(0,70)+'...'}</p>
-          </div>
-        </div>
+          </div>        
       </div>
     </Card>
+    
   )
 }
 

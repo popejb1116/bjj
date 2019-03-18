@@ -1,43 +1,38 @@
 import styled from 'styled-components'
 
-export const ListWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-`
-
-export const List = styled.div`
-  height: 100%;
-  min-width: 100px;
-  width: 50%;
-  margin: 1rem;
-  text-align: center;
-  flex-grow: 1;
-`
-
 export const ListHeader = styled.div`
   color: #ff1744;
   background-color: transparent;
   font-size: 3rem;
   font-weight: bold;
+  text-align: center;
 `
 
-export const Card = styled.div`
-  .card{
-    background-color: rgb(0,0,0, 0.6);
-    color: white;
-  }
+export const ListBody = styled.div`
+`
 
-  .card-image{
-    position: relative;
-    float: left;
-    width: 300px;
-    height: 300px;
-    background-position: 50% 50%;
-    background-size: cover;
-  }
+export const Card = styled.div`   
 
-  img{
-    width: 100%;
-    height: 100%;
+   .card {
+      background-color: rgb(0,0,0, 0.6);
+   }
+   .card:hover{            
+      .card-content{
+      color: white;    
+      background-color: #ff1744 !important;  
+      font-size: 1rem;
+      }
+   }
+
+  .card-title{
+      color: #ff1744 !important;
+      font-size: 1.5rem;
+      font-weight: bold;
+  }
+  .card-content{
+      color: white;      
+      font-size: 1rem;
   }
 `
+
+

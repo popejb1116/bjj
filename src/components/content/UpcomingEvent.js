@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import mmaIcon from '../../images/event-mma.jpeg'
-import boxingIcon from '../../images/event-boxing.jpeg'
-import bjjIcon from '../../images/event-bjj.jpeg'
+import mmaIcon from '../../images/event-mma-w.png'
+import boxingIcon from '../../images/event-boxing-w.png'
+import bjjIcon from '../../images/event-bjj-w.png'
+
+
 import { Card } from './StyledComponents'
 
 class UpcomingEvent extends Component {
@@ -19,16 +21,14 @@ class UpcomingEvent extends Component {
 
     return (
       <Card>
-        <div className="card horizontal small">
+        <div className="card">
           <div className="card-image">
             <img src={displayIcon} />
-          </div>
-          <div className="card-stacked">
-            <div className="card-content">
-              <span className="card-title">{title}</span>
-              <p>{description}</p>
-            </div>
-          </div>
+            <span className="card-title">{title}</span>
+          </div>          
+         <div className="card-content">            
+            <p>{description.slice(0,70)+'...'}</p>
+         </div>          
         </div>
       </Card>
     )

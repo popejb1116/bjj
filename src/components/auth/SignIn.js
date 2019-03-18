@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import { auth } from '../../config/fbConfig'
 import { Link } from 'react-router-dom'
-import { Form, FormHeader, FormBody, FormFooter, FormNavAndAction, FormCancel, StyledErrorModal} from './StyledComponents'
+import { StyledErrorModal, Form, FormHeader, FormBody, FormInlineNote, FormBodyAnchor, FormButton, FormFooter, FormCancel} from './StyledComponents'
 import M from 'materialize-css'
 
 class SignIn extends React.Component {
@@ -74,38 +74,41 @@ class SignIn extends React.Component {
           </div>
         </StyledErrorModal>
 
-        <Form>
-          <FormHeader>
-            Quote of the day...
-          </FormHeader>
-          <FormBody>
-            <form >
-              <div className="input-field">
-                <label htmlFor='email'>Email Address</label>
-                <input id="email" type="email" value={this.state.email} onChange={this.handleChange}/>
-              </div>
-              
-              <div className="input-field">
-                <label htmlFor='password'>Password</label>
-                <input id="password" type="password" value={this.state.password} onChange={this.handleChange}/>
-              </div>  
+        <div className="row">
+            <div className="col s12 m8 offset-m2 l8 offset-l2">                        
+               <Form>                  
+                  <FormHeader>Quote of the day...</FormHeader>   
+                  
+                  <FormBody onSubmit={this.handleSubmit}>                  
+                     <div className="input-field">
+                        <label htmlFor='email'>Email Address</label>
+                        <input id="email" type="email" value={this.state.email} onChange={this.handleChange}/>
+                     </div>
+                     
+                     <div className="input-field">
+                        <label htmlFor='password'>Password</label>
+                        <input id="password" type="password" value={this.state.password} onChange={this.handleChange}/>
+                     </div>  
 
-              <div className="signup-block">
-                <div>Don't have an account?</div>
-                <Link to="/signup" className="signup-link btn z-depth-0">Sign Up</Link>
-              </div>
-              
-            </form>   
-          </FormBody>
-          <FormFooter> 
-            <FormNavAndAction>
-              <a className="btn-large z-depth-0" onClick={this.handleSubmit}>Sign In</a>     
-            </FormNavAndAction>   
-            <FormCancel>
-              <a className="btn z-depth-0" href="/">Cancel</a>
-            </FormCancel>       
-          </FormFooter>
-        </Form>
+                     <FormInlineNote>
+                        <div>Don't have an account?</div>                        
+                        <Link to="/signup" className="btn-small z-depth-0">Sign Up</Link>                        
+                     </FormInlineNote>
+
+                     <FormBodyAnchor>
+                        <FormButton >
+                           <button className="btn-large z-depth-0" onClick={this.handleSubmit}>Sign In</button>
+                        </FormButton>
+                     </FormBodyAnchor>                     
+                  </FormBody>
+                  
+                  <FormFooter>
+                     <FormCancel><a className="btn z-depth-0" href="/">Cancel</a></FormCancel>
+                  </FormFooter>
+               </Form>           
+            </div>
+        </div>
+
       </Fragment>
     )
   }

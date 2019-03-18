@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import NewsItem from './NewsItem'
 import UpcomingEvent from './UpcomingEvent'
 import { StoreContext } from '../../StoreContext'
-import { ListWrapper, List, ListHeader } from './StyledComponents'
+import { ListHeader, ListBody } from './StyledComponents'
 
 class Home extends Component {
 
@@ -26,20 +26,17 @@ class Home extends Component {
       )
     })
 
-    return (      
-      <ListWrapper>
-
-        <List>
-          <ListHeader>News Feed</ListHeader>
-          {newsItemList}
-        </List>
-
-        <List>
-          <ListHeader>Upcoming Events</ListHeader>
-          {upcomingEventList}
-        </List>
-
-      </ListWrapper>        
+    return(       
+      <div className="row">         
+         <div className="col s10 offset-s1 m8 offset-m2 l4 offset-l2">
+            <ListHeader>News</ListHeader>
+            <ListBody>{newsItemList}</ListBody>
+         </div>
+         <div className="col s10 offset-s1 m8 offset-m2 l4">
+            <ListHeader>Events</ListHeader>
+            <ListBody>{upcomingEventList}</ListBody>
+         </div>
+      </div>       
     )
   }
 }
