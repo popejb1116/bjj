@@ -4,14 +4,13 @@ import './index.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 import { StoreProvider } from '../src/StoreContext'
-import { AuthProvider } from '../src/contexts/AuthContext'
+import { AuthUserProvider } from '../src/contexts/AuthUserContext'
 
 ReactDOM.render(
 <StoreProvider>
-<AuthProvider>
-
+<AuthUserProvider>
    <App />
-</AuthProvider>
+</AuthUserProvider>
 </StoreProvider>, 
 document.getElementById('root'))
 

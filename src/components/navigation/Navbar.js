@@ -1,35 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom'
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
-import { auth } from '../../config/fbConfig'
+import { AuthUserContext } from '../../contexts/AuthUserContext'
 import { NavBar, NavLogo, NavLinks, MobileNavLinks} from './StyledComponents'
 import M from 'materialize-css'
 
 class Navbar extends Component {  
 
-  state = {
-    signedIn: false
-  }
+   static contextType = AuthUserContext
 
-  componentDidMount(){
-     /* AUTH STATUS CHECK */
-    auth.onAuthStateChanged(user => {
-      if (user) {
-        this.setState({
-          signedIn: true
-        })        
-      } else {
-        this.setState({
-          signedIn: false
-        })
-      }      
-    })
-
-    /* INIT MOBILE SIDENAV */
-    const elem = document.getElementById("slide-out")
-    M.Sidenav.init(elem)
-  }
+   componentDidMount(){
+      /* INIT MOBILE SIDENAV */
+      const elem = document.getElementById("slide-out")
+      M.Sidenav.init(elem)
+   }
 
    componentWillUnmount(){
       const elem = document.getElementById("slide-out")
@@ -44,10 +29,19 @@ class Navbar extends Component {
    }
   
   render() {
-   let conditionalAuthLinks = this.state.signedIn ? 
-      (<SignedInLinks handleSidenavClose = {this.handleSidenavClose} />) 
+   console.log('Navbar render')
+   let conditionalAuthLinks = this.context.authUser ? 
+      (<Fragment>
+         <SignedInLinks handleSidenavClose = {this.handleSidenavClose} />
+         {this.context.userProfile.firstName[0] + this.context.userProfile.lastName[0]}          
+      </Fragment>)
    : 
       (<SignedOutLinks handleSidenavClose = {this.handleSidenavClose} />)
+
+   /* let conditionalAuthLinks = this.context.user ? 
+      (<SignedInLinks handleSidenavClose = {this.handleSidenavClose} />) 
+   : 
+      (<SignedOutLinks handleSidenavClose = {this.handleSidenavClose} />) */
    
    return (
       <NavBar className="z-depth-0">        

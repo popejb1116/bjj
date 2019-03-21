@@ -1,32 +1,17 @@
 import React, { Component } from 'react'
-import { auth } from '../../config/fbConfig'
-import { AuthContext } from '../../contexts/AuthContext'
+//import { auth } from '../../config/fbConfig'
+import { AuthUserContext } from '../../contexts/AuthUserContext'
 
 class Forum extends Component {
 
-   static contextType = AuthContext
+   static contextType = AuthUserContext
 
-  state = {
+ /*  state = {
     signedIn: false
-  }
+  } */
 
   componentDidMount(){
-    /* let unsubscribe = auth.onAuthStateChanged(user => {
-      if (user) {
-        this.setState({
-          signedIn: true
-        })        
-      } else {
-        this.setState({
-          signedIn: false
-        })
-      }      
-    }) */
-    
-    // THIS UNSUBSCRIBES FROM ASYNC EVENTS WHICH UPDATE AFTER A COMPONENT UNMOUNTS
-    //unsubscribe()
-
-    //INIT MOBILE
+  
   }
 
   componentWillUnmount(){
@@ -34,15 +19,8 @@ class Forum extends Component {
   }
 
   render(){
-    /* let conditionalContent = this.state.signedIn ? (
-      <h1>Dat special shit</h1>
-    ) : (
-      <h1>Please Sign In or Sign Up to view the forum</h1>
-    ) */
 
-    
-
-    let conditionalContent = this.context.user ? (
+    let conditionalContent = this.context.authUser ? (
       <h1>Dat special shit</h1>
     ) : (
       <h1>Please Sign In or Sign Up to view the forum</h1>
