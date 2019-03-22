@@ -33,7 +33,11 @@ class Navbar extends Component {
    let conditionalAuthLinks = this.context.authUser ? 
       (<Fragment>
          <SignedInLinks handleSidenavClose = {this.handleSidenavClose} />
+         
+         <li><Link to="/profile">
          {this.context.userProfile.firstName[0] + this.context.userProfile.lastName[0]}          
+         </Link></li>
+         
       </Fragment>)
    : 
       (<SignedOutLinks handleSidenavClose = {this.handleSidenavClose} />)
