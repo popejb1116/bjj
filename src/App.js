@@ -9,6 +9,7 @@ import Forum from './components/content/Forum'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/signUp/SignUp'
 import SignOut from './components/auth/SignOut'
+import ProfileEdit from './components/auth/ProfileEdit'
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />
             <Route path="/signout" component={SignOut} />
+            <Route path="/profile" component={ProfileEdit} />
           </div>          
         </BrowserRouter>        
       </div>

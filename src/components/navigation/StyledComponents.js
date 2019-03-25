@@ -25,6 +25,10 @@ export const NavLinks = styled.ul`
   a:hover{
     text-decoration: underline;
   }
+  .chip{
+      color: white !important;
+      background-color: #ff1744 !important;
+  }
 `
 
 export const MobileNavLinks = styled.ul`
@@ -33,4 +37,8 @@ export const MobileNavLinks = styled.ul`
       color: white !important;
       background-color: transparent !important;
    }
+   .chip{
+      color: #ff1744 !important;
+      background-color: white !important;
+  }
 `
