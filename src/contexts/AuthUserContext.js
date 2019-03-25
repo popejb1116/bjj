@@ -19,10 +19,7 @@ class AuthUserProvider extends Component {
       AND THE REALTED USER PROFILE DOCUMENT OF A USER WHICH IS CURRENTLY SIGNED IN */
 
       this.authListenerUnsubscribe = auth.onAuthStateChanged( authUser => {
-         //console.log('AUTH LISTENER ORDER 1')
-
-         if (authUser) {
-            //console.log('AUTH LISTENER ORDER 2')
+         if (authUser) {            
             this.documentListenerUnsubscribe = firestore.collection('users').doc(auth.currentUser.uid).onSnapshot( doc => {
                this.setState({
                   authUser: authUser,

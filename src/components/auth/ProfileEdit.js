@@ -15,9 +15,7 @@ class ProfileEdit extends Component {
    }
 
    handleChange = event => {
-      console.log(event.target)
-      const { id, value, name } = event.target
-  
+      const { id, value, name } = event.target  
       // RADIO BUTTON EVENT(S)
       if (name) {
         this.setState({
@@ -32,8 +30,7 @@ class ProfileEdit extends Component {
     }
 
    handleSubmit = event => {
-      event.preventDefault()
-      console.log('ProfileEdit handleSubmit()')
+      event.preventDefault()      
       const {firstName, lastName, primaryDiscipline, yearsExperience} = this.state     
       
       firestore.collection('users').doc(auth.currentUser.uid).update(
@@ -50,10 +47,7 @@ class ProfileEdit extends Component {
       })
    }
 
-   render(){
-      
-      console.log('ProfileEdit render')
-      console.log(this.context.userProfile)
+   render(){     
       const {firstName, lastName, primaryDiscipline, yearsExperience } = this.state
 
       return (
@@ -64,12 +58,12 @@ class ProfileEdit extends Component {
 
                   <FormBody>          
                      <div className="input-field">
-                        <label htmlFor='firstName'>First Name</label>
+                        <label className="active" htmlFor='firstName'>First Name</label>
                         <input id="firstName" type="text" value={firstName} onChange={this.handleChange}/>
                      </div>
                      
                      <div className="input-field">
-                        <label htmlFor='lastName'>Last Name</label>
+                        <label className="active" htmlFor='lastName'>Last Name</label>
                         <input id="lastName" type="text" value={lastName} onChange={this.handleChange}/>
                      </div>
 

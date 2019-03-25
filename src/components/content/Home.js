@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import NewsItem from './NewsItem'
 import UpcomingEvent from './UpcomingEvent'
-import { StoreContext } from '../../StoreContext'
+import { StoreContext } from '../../contexts/StoreContext'
 import { ListHeader, ListBody } from './StyledComponents'
 
 class Home extends Component {

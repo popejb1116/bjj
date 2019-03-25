@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import SignedInLinks from './SignedInLinks';
-import SignedOutLinks from './SignedOutLinks';
+import { SignedInLinks, SignedInLinksMobile } from './SignedInLinks'
+import { SignedOutLinks, SignedOutLinksMobile} from './SignedOutLinks'
 import { AuthUserContext } from '../../contexts/AuthUserContext'
 import { NavBar, NavLogo, NavLinks, MobileNavLinks} from './StyledComponents'
 import M from 'materialize-css'
@@ -29,23 +29,15 @@ class Navbar extends Component {
    }
   
   render() {
-   console.log('Navbar render')
-   let conditionalAuthLinks = this.context.authUser ? 
-      (<Fragment>
-         <SignedInLinks handleSidenavClose = {this.handleSidenavClose} />
-         
-         <li><Link to="/profile">
-         {this.context.userProfile.firstName[0] + this.context.userProfile.lastName[0]}          
-         </Link></li>
-         
-      </Fragment>)
-   : 
-      (<SignedOutLinks handleSidenavClose = {this.handleSidenavClose} />)
 
-   /* let conditionalAuthLinks = this.context.user ? 
-      (<SignedInLinks handleSidenavClose = {this.handleSidenavClose} />) 
-   : 
-      (<SignedOutLinks handleSidenavClose = {this.handleSidenavClose} />) */
+   let conditionalAuthLinks, conditionalAuthLinksMobile
+   if (this.context.authUser) {
+      conditionalAuthLinks = <SignedInLinks />
+      conditionalAuthLinksMobile = <SignedInLinksMobile handleSidenavClose = {this.handleSidenavClose} />
+   } else {
+      conditionalAuthLinks = <SignedOutLinks />
+      conditionalAuthLinksMobile = <SignedOutLinksMobile handleSidenavClose = {this.handleSidenavClose} />
+   }   
    
    return (
       <NavBar className="z-depth-0">        
@@ -65,7 +57,7 @@ class Navbar extends Component {
          <MobileNavLinks id="slide-out" className="sidenav">
             <li><Link to="/" onClick={this.handleSidenavClose}>Home</Link></li>  
             <li><Link to="/forum" onClick={this.handleSidenavClose}>Forum</Link></li>
-            {conditionalAuthLinks}
+            {conditionalAuthLinksMobile}
          </MobileNavLinks>            
          
       </NavBar>
