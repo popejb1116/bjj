@@ -9,12 +9,7 @@ const Discussion = props => {
    return (
       <Card className="card">              
 
-            <div className="card-content">            
-               {/* <Title className="card-title center activator">ID: {id}</Title>
-               <Question className="activator">
-                  Question: {data.question}
-                  <i className="material-icons right activator">more_vert</i>
-               </Question> */}
+            <div className="card-content">
                <Question className="card-title center activator">
                   {data.question}
                   <i className="material-icons right">more_vert</i>
@@ -22,7 +17,6 @@ const Discussion = props => {
                <Author>Asked By: {data.authorIndex} On: data.askedAt()</Author>
 
             </div>
-            
             
             <div className="card-reveal">
                <ForumContext.Consumer>
@@ -32,9 +26,6 @@ const Discussion = props => {
                      })
                   )}
                </ForumContext.Consumer>
-               
-               <span className="card-title grey-text text-darken-4">Author 2</span>
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde itaque eligendi magnam laboriosam qui rem officia totam ducimus. Tempora aperiam ullam nesciunt repudiandae, voluptatem provident nam qui voluptas nobis nulla.</p>
             </div>    
 
          
