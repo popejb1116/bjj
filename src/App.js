@@ -5,7 +5,7 @@ import { BrowserRouter, Route} from 'react-router-dom'
 import Navbar from './components/navigation/Navbar'
 
 import Home from './components/content/Home'
-import Forum from './components/content/Forum'
+import Forum from './components/content/forum/Forum'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/signUp/SignUp'
 import SignOut from './components/auth/SignOut'

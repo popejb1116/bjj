@@ -1,30 +1,42 @@
 import React, {Fragment} from 'react'
 import { ForumContext } from '../../../contexts/ForumContext'
-import { StyledQuestion, Marker, Statement, Info, StyledAnswer } from './StyledComponents'
+import { StyledQuestion, Marker, Statement, Info, StyledAnswer, AnswerFooter } from './StyledComponents'
 import Answer from './Answer'
 
 const Question = props => {
-   const { data, questionID } = props
+   const { questionData, questionID, instanceIndex, handleCloseAnswers } = props
    return (
       <Fragment>
          <StyledQuestion className="collapsible-header">            
             <Marker>Q</Marker>
-            <Statement isQuestion={true} >{data.question}</Statement>
+            <Statement isQuestion={true} >{questionData.question}</Statement>
             <br/>
-            <Info isQuestion={true}>Asked by: {data.authorID} at: timestamp</Info>            
+            <Info isQuestion={true}>Asked by: {questionData.authorID} at: timestamp</Info>            
          </StyledQuestion>
          
          <StyledAnswer className="collapsible-body">
             <ForumContext.Consumer>
                {context => (
                   context.answers.map(answer => {
-                     if (answer.data().questionID === questionID) {
-                        return <Answer data={answer.data()} key={answer.id} />    
+                     const { id } = answer
+                     const data = answer.data()
+                     // FIND CORRESPONDING ANSWERS TO A GIVEN QUESTION
+                     if (data.questionID === questionID) {
+                        return <Answer answerData={data} key={id} />    
                      }
                   })
                )}
             </ForumContext.Consumer>
+            <AnswerFooter>
+               <div 
+                  className="btn z-depth-0"
+                  onClick={() => handleCloseAnswers(instanceIndex)}
+                  >Close
+               </div>
+            </AnswerFooter>
          </StyledAnswer>
+
+         
 
       </Fragment>
    )

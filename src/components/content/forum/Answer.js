@@ -2,11 +2,11 @@ import React, { Fragment } from 'react'
 import { Statement, Info } from './StyledComponents'
 
 const Answer = props => {  
-   const { data } = props
+   const { answerData } = props
    return (
      <Fragment>
-         <Statement isQuestion={false}>Answer: {data.answer}</Statement>
-         <Info isQuestion={false}>Answered by: {data.authorID} at: timestamp</Info>
+         <Statement isQuestion={false}>Answer: {answerData.answer}</Statement>
+         <Info isQuestion={false}>Answered by: {answerData.authorID} at: timestamp</Info>
          <br/>
      </Fragment>
    )

@@ -31,11 +31,29 @@ export const Statement = styled.div`
 
 export const Info = styled.div`
    color: ${props => props.isQuestion ?
-   "white" : "black" };   
+   "white" : "#ff1744" };   
    font-size: 1rem !important;
    font-weight: bold !important;  
 `
 
 export const StyledAnswer = styled.div`
    background-color: white;
+`
+
+export const AnswerFooter = styled.div`
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: center;
+
+   .btn{
+      color: #ff1744;
+      background-color: transparent;
+      font-weight: bold;
+   }
+
+   .btn:hover{
+      color: white;
+      background-color: #ff1744;
+      font-weight: bold;
+   }
 `

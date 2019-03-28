@@ -1,20 +1,25 @@
 import React, { Component, Fragment } from 'react'
-import { ForumContext } from '../../contexts/ForumContext'
-import Question from './forum/Question'
+import { ForumContext } from '../../../contexts/ForumContext'
+import Question from './Question'
 import M from 'materialize-css'
-import { ForumContainer } from './forum/StyledComponents'
+import { ForumContainer } from './StyledComponents'
 
 class Forum extends Component {
 
+   elem = null
+   instance = null
+
    componentDidMount(){
-      const elem = document.querySelector('.collapsible')
-      M.Collapsible.init(elem)
+      this.elem = document.querySelector('.collapsible')
+      this.instance = M.Collapsible.init(this.elem)
    }
 
    componentWillUnmount(){
-      const elem = document.querySelector('.collapsible')
-      const instance = M.Collapsible.getInstance(elem)
-      instance.destroy()
+      this.instance.destroy()
+   }
+
+   handleCloseAnswers = index => {
+      this.instance.close(index)
    }
 
    render(){
@@ -23,10 +28,18 @@ class Forum extends Component {
             <ul className="collapsible z-depth-1">
                <ForumContext.Consumer>
                   {context => (
-                     context.questions.map(question => {
-                        const {id} = question
+                     context.questions.map( (question, index) => {
+                        const { id } = question
                         const data = question.data()
-                        return <li key={id}><Question data={data} questionID={id}/></li>
+                        return ( 
+                           <li key={id}>
+                              <Question 
+                                 questionData={data} 
+                                 questionID={id} 
+                                 instanceIndex = {index}
+                                 handleCloseAnswers={this.handleCloseAnswers}/>
+                           </li> 
+                        )
                      })
                   )}
                </ForumContext.Consumer>
