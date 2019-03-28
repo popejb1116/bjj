@@ -11,8 +11,7 @@ class ForumProvider extends Component {
    }
 
    async componentDidMount(){
-      console.log('forum context cdm')
-
+      
       const snapshot_que = await firestore.collection('discussionQuestions').get()
       const tempQuestions = []
       await snapshot_que.forEach( question => {

@@ -1,55 +1,32 @@
-import React from 'react'
-import { Card } from './StyledComponents'
+import React, {Fragment} from 'react'
 import { ForumContext } from '../../../contexts/ForumContext'
+import { StyledQuestion, Marker, Statement, Info, StyledAnswer } from './StyledComponents'
 import Answer from './Answer'
 
-const divStyle = {
-   minHeight: 200
-}
-
 const Question = props => {
-   const { data } = props
+   const { data, questionID } = props
    return (
-      <Card className="card" >
-         <div className="card-content" style={divStyle}>
-
-            <div className="card-title center activator">
-               {data.question}
-               <i className="material-icons right">more_vert</i>
-            </div>
-
-            <div>
-               Asked By: {data.authorID} On: data.askedAt()
-               <i className="material-icons right">reply</i>
-            </div>
-
-         </div>
-
-         <div className="card-reveal" style={divStyle}>
-
-            <div className="card-title center">
-               <div className="btn-flat">
-                  <i className="material-icons">close</i>
-               </div>               
-            </div>
+      <Fragment>
+         <StyledQuestion className="collapsible-header">            
+            <Marker>Q</Marker>
+            <Statement isQuestion={true} >{data.question}</Statement>
+            <br/>
+            <Info isQuestion={true}>Asked by: {data.authorID} at: timestamp</Info>            
+         </StyledQuestion>
          
+         <StyledAnswer className="collapsible-body">
             <ForumContext.Consumer>
                {context => (
                   context.answers.map(answer => {
-                     return <Answer data={answer.data()} questionID="0" key={answer.id} />                  
+                     if (answer.data().questionID === questionID) {
+                        return <Answer data={answer.data()} key={answer.id} />    
+                     }
                   })
                )}
             </ForumContext.Consumer>
+         </StyledAnswer>
 
-            <div className="card-title center">
-               <div className="btn-flat">
-                  <i className="material-icons">close</i>
-               </div>               
-            </div>
-         
-         </div>
-
-      </Card>
+      </Fragment>
    )
 }
 
