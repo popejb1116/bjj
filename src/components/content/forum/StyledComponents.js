@@ -8,6 +8,27 @@ export const ForumContainer = styled.div`
    }  
 `
 
+export const ForumHeader = styled.div`
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: center;
+   padding: 1rem;
+
+   .btn-large {
+    color: #ff1744;
+    background-color: transparent;    
+    margin: 0 0.5rem;
+    padding: 0 1rem;
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+
+   .btn-large:hover{
+      color: white !important;
+      background-color: #ff1744;
+   }
+`
+
 export const StyledQuestion = styled.div`
    background-color: rgb(0,0,0, 0.6); 
    display: flex;
@@ -40,7 +61,7 @@ export const StyledAnswer = styled.div`
    background-color: white;
 `
 
-export const AnswerFooter = styled.div`
+export const AnswerOption = styled.div`
    display: flex;
    flex-flow: row nowrap;
    justify-content: center;

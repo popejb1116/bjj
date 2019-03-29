@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { ForumContext } from '../../../contexts/ForumContext'
 import Question from './Question'
 import M from 'materialize-css'
-import { ForumContainer } from './StyledComponents'
+import { ForumContainer, ForumHeader } from './StyledComponents'
 
 class Forum extends Component {
 
@@ -18,13 +18,22 @@ class Forum extends Component {
       this.instance.destroy()
    }
 
+   handleReply = () => {
+      console.log('Open reply form')
+   }
+
    handleCloseAnswers = index => {
       this.instance.close(index)
    }
 
    render(){
       return (
-         <ForumContainer className="container">         
+         <ForumContainer className="container">
+
+            <ForumHeader>
+               <div className="btn-large z-depth-0">Ask A Question</div>         
+            </ForumHeader>
+            
             <ul className="collapsible z-depth-1">
                <ForumContext.Consumer>
                   {context => (
@@ -37,6 +46,7 @@ class Forum extends Component {
                                  questionData={data} 
                                  questionID={id} 
                                  instanceIndex = {index}
+                                 handleReply = {this.handleReply}
                                  handleCloseAnswers={this.handleCloseAnswers}/>
                            </li> 
                         )

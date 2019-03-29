@@ -1,20 +1,30 @@
 import React, {Fragment} from 'react'
 import { ForumContext } from '../../../contexts/ForumContext'
-import { StyledQuestion, Marker, Statement, Info, StyledAnswer, AnswerFooter } from './StyledComponents'
+import { StyledQuestion, Marker, Statement, Info, StyledAnswer, AnswerOption } from './StyledComponents'
 import Answer from './Answer'
 
 const Question = props => {
-   const { questionData, questionID, instanceIndex, handleCloseAnswers } = props
+   const { questionData, questionID, instanceIndex, handleReply, handleCloseAnswers } = props
    return (
       <Fragment>
          <StyledQuestion className="collapsible-header">            
             <Marker>Q</Marker>
             <Statement isQuestion={true} >{questionData.question}</Statement>
             <br/>
-            <Info isQuestion={true}>Asked by: {questionData.authorID} at: timestamp</Info>            
+            <Info isQuestion={true}>Asked by: {questionData.authorID} at: timestamp</Info>
          </StyledQuestion>
          
          <StyledAnswer className="collapsible-body">
+
+            <AnswerOption>
+               <div 
+                  className="btn z-depth-0"
+                  onClick={handleReply}
+                  >Submit A Reply
+               </div>
+            </AnswerOption>
+            <br/>
+
             <ForumContext.Consumer>
                {context => (
                   context.answers.map(answer => {
@@ -27,16 +37,16 @@ const Question = props => {
                   })
                )}
             </ForumContext.Consumer>
-            <AnswerFooter>
+            
+            <AnswerOption>
                <div 
                   className="btn z-depth-0"
                   onClick={() => handleCloseAnswers(instanceIndex)}
                   >Close
                </div>
-            </AnswerFooter>
-         </StyledAnswer>
+            </AnswerOption>
 
-         
+         </StyledAnswer>
 
       </Fragment>
    )
