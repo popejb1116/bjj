@@ -2,39 +2,92 @@ import React, { Component, Fragment } from 'react'
 import { ForumContext } from '../../../contexts/ForumContext'
 import Question from './Question'
 import M from 'materialize-css'
-import { ForumContainer, ForumHeader } from './StyledComponents'
+import { ForumContainer, ForumHeader, StyledErrorModal } from './StyledComponents'
+import { AuthUserContext } from '../../../contexts/AuthUserContext'
 
 class Forum extends Component {
 
-   elem = null
-   instance = null
+   static contextType = AuthUserContext
+
+   /* COLLAPSIBLE REFERENCES */
+   collapsibleElem = null
+   collapsibleInstance = null
+
+   /* ERROR MODAL REFERENCES */
+   modalElem = null
+   modalInstance = null
+
+   state = {
+      noAuthErrorMessage: 'Unfortunately submitting questions and answers is reserved for account members in order to control the quality of technical information being distributed. ' + 
+      'We understand you see this alot, and if this is a deal breaker we hope you will still find entertainment and useful knowledge on our website. No hard feelings, which is a great song that would better ' +
+      ' the human condition itself, please have a listen.'
+   }
 
    componentDidMount(){
-      this.elem = document.querySelector('.collapsible')
-      this.instance = M.Collapsible.init(this.elem)
+      this.collapsibleElem = document.getElementById('collapsible')
+      this.collapsibleInstance = M.Collapsible.init(this.collapsibleElem)
+
+      this.modalElem = document.getElementById('error-modal')
+      const options = {
+         dismissible: false,
+         onCloseEnd: this.handleErrorModalClose
+      }
+      this.modalInstance = M.Modal.init(this.modalElem, options)
    }
 
    componentWillUnmount(){
-      this.instance.destroy()
+      this.collapsibleInstance.destroy()     
+   }
+
+   handleErrorModalClose = () => {
+      console.log('handleErrorModalClose - Conditionally destory instance')
+      //this.modalInstance.destroy()
+   }
+
+   handleQuestion = () => {      
+      if (this.context.authUser) {
+         // console.log('Open Question Form')         
+      } else {
+         // console.log('Auth Error, Redirect or Cancel')
+         this.modalInstance.open()
+      }
    }
 
    handleReply = () => {
-      console.log('Open reply form')
+      if (this.context.authUser) {
+         // console.log('Open Reply Form')
+      } else {
+         // console.log('Auth Error, Redirect or Cancel')
+         this.modalInstance.open()
+      }      
    }
 
    handleCloseAnswers = index => {
-      this.instance.close(index)
+      this.collapsibleInstance.close(index)
    }
 
    render(){
       return (
          <ForumContainer className="container">
 
+            <StyledErrorModal >
+               <div id="error-modal" className="modal">
+                     <div className="modal-content">
+                        {this.state.noAuthErrorMessage}
+                        <a className="modal-close btn-flat">Close</a>
+                     </div>
+               </div>
+            </StyledErrorModal>
+
             <ForumHeader>
-               <div className="btn-large z-depth-0">Ask A Question</div>         
+               <div 
+                  className="btn-large z-depth-0"
+                  onClick = {this.handleQuestion}
+                  >Ask A Question
+               </div>         
             </ForumHeader>
             
-            <ul className="collapsible z-depth-1">
+            <ul id="collapsible" className="collapsible z-depth-1">
                <ForumContext.Consumer>
                   {context => (
                      context.questions.map( (question, index) => {

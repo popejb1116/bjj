@@ -15,12 +15,11 @@ const Question = props => {
          </StyledQuestion>
          
          <StyledAnswer className="collapsible-body">
-
             <AnswerOption>
                <div 
                   className="btn z-depth-0"
                   onClick={handleReply}
-                  >Submit A Reply
+                  >Reply
                </div>
             </AnswerOption>
             <br/>
@@ -45,7 +44,6 @@ const Question = props => {
                   >Close
                </div>
             </AnswerOption>
-
          </StyledAnswer>
 
       </Fragment>

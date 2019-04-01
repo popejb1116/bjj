@@ -8,6 +8,29 @@ export const ForumContainer = styled.div`
    }  
 `
 
+export const StyledErrorModal = styled.div`
+  color: white;
+  font-size: 1.5rem;
+
+  .modal{
+     background-color: transparent;
+  }
+
+  .modal-content{
+    background-color: #ff1744;
+    text-align: center;
+    padding: 1rem;
+  }
+  .modal-close{
+    display: flex;
+    justify-content: flex-end;
+    color: white;    
+    background-color: #ff1744;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+`
+
 export const ForumHeader = styled.div`
    display: flex;
    flex-flow: row nowrap;
