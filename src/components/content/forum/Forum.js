@@ -29,7 +29,6 @@ class Forum extends Component {
 
       this.modalElem = document.getElementById('error-modal')
       const options = {
-         dismissible: false,
          onCloseEnd: this.handleErrorModalClose
       }
       this.modalInstance = M.Modal.init(this.modalElem, options)
@@ -46,7 +45,8 @@ class Forum extends Component {
 
    handleQuestion = () => {      
       if (this.context.authUser) {
-         // console.log('Open Question Form')         
+         console.log('Open Question Form')    
+         this.props.history.push('/forum/ask')     
       } else {
          // console.log('Auth Error, Redirect or Cancel')
          this.modalInstance.open()
@@ -55,7 +55,8 @@ class Forum extends Component {
 
    handleReply = () => {
       if (this.context.authUser) {
-         // console.log('Open Reply Form')
+         console.log('Open Reply Form')
+         this.props.history.push('/forum/reply')
       } else {
          // console.log('Auth Error, Redirect or Cancel')
          this.modalInstance.open()
@@ -72,10 +73,10 @@ class Forum extends Component {
 
             <StyledErrorModal >
                <div id="error-modal" className="modal">
-                     <div className="modal-content">
-                        {this.state.noAuthErrorMessage}
-                        <a className="modal-close btn-flat">Close</a>
-                     </div>
+                  <div className="modal-content">
+                     {this.state.noAuthErrorMessage}
+                     <a className="modal-close btn-flat">Close</a>
+                  </div>
                </div>
             </StyledErrorModal>
 
@@ -93,6 +94,7 @@ class Forum extends Component {
                      context.questions.map( (question, index) => {
                         const { id } = question
                         const data = question.data()
+                        console.log( data )
                         return ( 
                            <li key={id}>
                               <Question 

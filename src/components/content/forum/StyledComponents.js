@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const ForumContainer = styled.div`
-   margin-top: 2rem;
 
    .collapsible{
       border: 0
@@ -93,6 +92,45 @@ export const AnswerOption = styled.div`
       color: #ff1744;
       background-color: transparent;
       font-weight: bold;
+   }
+
+   .btn:hover{
+      color: white;
+      background-color: #ff1744;
+      font-weight: bold;
+   }
+`
+
+export const Form = styled.form `
+   display: flex;
+   flex-flow: column nowrap;
+   justify-content: space-between;
+   background-color: rgb(0,0,0, 0.6); 
+   padding: 2rem;
+   min-height: 500px;
+
+   textarea, label{
+      color: white !important;
+      font-size: 1.5rem;
+   }
+
+  textarea:focus{
+      border-bottom: 1px solid white !important;
+      box-shadow: 0 1px 0 0 white !important;
+      font-size: 1.5rem;
+   }
+`
+
+export const FormFooter = styled.div`
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: center;
+
+   .btn{
+      color: white;
+      background-color: transparent;
+      font-weight: bold;
+      margin: 1rem;
    }
 
    .btn:hover{
