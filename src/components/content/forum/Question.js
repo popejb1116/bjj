@@ -5,7 +5,7 @@ import Answer from './Answer'
 
 const Question = props => {
    const { questionData, questionID, instanceIndex, handleReply, handleCloseAnswers } = props
-   // CONVERT FIREBASE TIMESTAMP TO JS DATE THEN PARSE
+   // CONVERT FIREBASE TIMESTAMP TO JS DATE THEN PARSE, timestamp IS OBJECT TYPE DATE
    const timestamp = questionData.askedAt.toDate()
    const date = timestamp.toLocaleDateString()
    const time = timestamp.toLocaleTimeString()
