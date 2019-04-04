@@ -5,13 +5,21 @@ import Answer from './Answer'
 
 const Question = props => {
    const { questionData, questionID, instanceIndex, handleReply, handleCloseAnswers } = props
+   // CONVERT FIREBASE TIMESTAMP TO JS DATE THEN PARSE
+   const timestamp = questionData.askedAt.toDate()
+   const date = timestamp.toLocaleDateString()
+   const time = timestamp.toLocaleTimeString()
+
    return (
       <Fragment>
          <StyledQuestion className="collapsible-header">            
             <Marker>Q</Marker>
             <Statement isQuestion={true} >{questionData.question}</Statement>
             <br/>
-            <Info isQuestion={true}>Asked by: {questionData.authorID} at: timestamp</Info>
+            <Info 
+               isQuestion={true}
+               >Asked by: {questionData.authorID} on: {date} at: {time}
+            </Info>
          </StyledQuestion>
          
          <StyledAnswer className="collapsible-body">
