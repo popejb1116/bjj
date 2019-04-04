@@ -94,7 +94,7 @@ class Forum extends Component {
                      context.questions.map( (question, index) => {
                         const { id } = question
                         const data = question.data()
-                        console.log( data )
+                        //console.log( data )
                         return ( 
                            <li key={id}>
                               <Question 
