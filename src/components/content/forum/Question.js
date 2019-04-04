@@ -4,7 +4,7 @@ import { StyledQuestion, Marker, Statement, Info, StyledAnswer, AnswerOption } f
 import Answer from './Answer'
 
 const Question = props => {
-   const { questionData, questionID, instanceIndex, handleReply, handleCloseAnswers } = props
+   const { questionData, questionID, instanceIndex, handleAnswer, handleCloseAnswers } = props
    // CONVERT FIREBASE TIMESTAMP TO JS DATE THEN PARSE, timestamp IS OBJECT TYPE DATE
    const timestamp = questionData.askedAt.toDate()
    const date = timestamp.toLocaleDateString()
@@ -26,8 +26,8 @@ const Question = props => {
             <AnswerOption>
                <div 
                   className="btn z-depth-0"
-                  onClick={handleReply}
-                  >Reply
+                  onClick={handleAnswer}
+                  >Answer
                </div>
             </AnswerOption>
             <br/>

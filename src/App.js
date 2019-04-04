@@ -11,8 +11,12 @@ import SignUp from './components/auth/signUp/SignUp'
 import SignOut from './components/auth/SignOut'
 import ProfileEdit from './components/auth/ProfileEdit'
 import AskQuestion from './components/content/forum/AskQuestion'
+import SubmitAnswer from './components/content/forum/SubmitAnswer'
+
+
 import SubmitReply from './components/content/forum/SubmitReply'
 
+//TODO: PROTECT ROUTES ask, answer, profile
 class App extends Component {
   render() {
     return (
@@ -29,8 +33,8 @@ class App extends Component {
             <Route path="/forum/ask" render={ () => {
                return <AskQuestion />
             }} />
-            <Route path="/forum/reply" render={ () => {
-               return <SubmitReply />
+            <Route path="/forum/answer" render={ () => {
+               return <SubmitAnswer />
             }} />
 
             <Route path="/signin" component={SignIn} />

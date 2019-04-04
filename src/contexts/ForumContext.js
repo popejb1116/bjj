@@ -12,13 +12,13 @@ class ForumProvider extends Component {
 
    async componentDidMount(){
       
-      const snapshot_que = await firestore.collection('discussionQuestions').get()
+      const snapshot_que = await firestore.collection('forumQuestions').get()
       const tempQuestions = []
       await snapshot_que.forEach( question => {
          tempQuestions.push(question)
       })
 
-      const snapshot_ans = await firestore.collection('discussionAnswers').get()
+      const snapshot_ans = await firestore.collection('forumAnswers').get()
       const tempAnswers = []
       await snapshot_ans.forEach( answer => {
          tempAnswers.push(answer)

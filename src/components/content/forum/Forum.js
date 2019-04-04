@@ -53,10 +53,10 @@ class Forum extends Component {
       }
    }
 
-   handleReply = () => {
+   handleAnswer = () => {
       if (this.context.authUser) {
-         console.log('Open Reply Form')
-         this.props.history.push('/forum/reply')
+         console.log('Open Answer Form')
+         this.props.history.push('/forum/answer')
       } else {
          // console.log('Auth Error, Redirect or Cancel')
          this.modalInstance.open()
@@ -101,7 +101,7 @@ class Forum extends Component {
                                  questionData={data} 
                                  questionID={id} 
                                  instanceIndex = {index}
-                                 handleReply = {this.handleReply}
+                                 handleAnswer = {this.handleAnswer}
                                  handleCloseAnswers={this.handleCloseAnswers}/>
                            </li> 
                         )
