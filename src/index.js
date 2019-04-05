@@ -5,11 +5,14 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 import { StoreProvider } from './contexts/StoreContext'
 import { AuthUserProvider } from '../src/contexts/AuthUserContext'
+import { ForumProvider } from './contexts/ForumContext'
 
 ReactDOM.render(
 <StoreProvider>
 <AuthUserProvider>
+<ForumProvider>
    <App />
+</ForumProvider>
 </AuthUserProvider>
 </StoreProvider>, 
 document.getElementById('root'))
