@@ -3,10 +3,16 @@ import { Statement, Info } from './StyledComponents'
 
 const Answer = props => {  
    const { answerData } = props
+   const timestamp = answerData.answeredAt.toDate()
+   const date = timestamp.toLocaleDateString()
+   const time = timestamp.toLocaleTimeString()
+
    return (
      <Fragment>
          <Statement isQuestion={false}>Answer: {answerData.answer}</Statement>
-         <Info isQuestion={false}>Answered by: {answerData.authorID} at: timestamp</Info>
+         <Info 
+            isQuestion={false}
+            >Answered by {answerData.authorLabel} on {date} at {time}</Info>
          <br/>
      </Fragment>
    )

@@ -36,7 +36,7 @@ class AskQuestion extends Component {
          await doc.set({
             question: this.state.question,
             askedAt: new Date(),
-            authorID: authorLabel
+            authorLabel: authorLabel
          })
          
          this.setState({redirectToForum: true})

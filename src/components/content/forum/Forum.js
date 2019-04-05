@@ -38,6 +38,7 @@ class Forum extends Component {
       this.collapsibleInstance.destroy()     
    }
 
+   //TODO:
    handleErrorModalClose = () => {
       console.log('handleErrorModalClose - Conditionally destory instance')
       //this.modalInstance.destroy()

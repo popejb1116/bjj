@@ -33,7 +33,7 @@ class SubmitAnswer extends Component {
          await answerDoc.set({
          answer: this.state.answer,
          answeredAt: new Date(),
-         authorID: authorLabel,
+         authorLabel: authorLabel,
          questionID: questionID
          })
 

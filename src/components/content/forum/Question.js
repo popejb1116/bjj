@@ -18,7 +18,7 @@ const Question = props => {
             <br/>
             <Info 
                isQuestion={true}
-               >Asked by: {questionData.authorID} on: {date} at: {time}
+               >Asked by: {questionData.authorLabel} on: {date} at: {time}
             </Info>
          </StyledQuestion>
          
