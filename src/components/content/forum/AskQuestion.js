@@ -20,13 +20,9 @@ class AskQuestion extends Component {
       })
    }
 
-   //TODO: authorID -> authorLabel
    onSubmit = async e => {
-      
       e.preventDefault()
-      
       try {
-
          // GET AUTH USER INITIALS FOR SUBSEQUENT POST
          const userDoc = await firestore.collection('users').doc(this.context.authUser.uid.toString()).get()
          const authorLabel = userDoc.data().firstName + ' ' + userDoc.data().lastName[0] + '.'
@@ -42,7 +38,7 @@ class AskQuestion extends Component {
          this.setState({redirectToForum: true})
          window.location.reload(true)
       } catch (error) {
-         
+         console.log('ask question error')
       }
 
       

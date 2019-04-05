@@ -17,8 +17,9 @@ class Forum extends Component {
    modalElem = null
    modalInstance = null
 
+   //TODO: ADD LINK
    state = {
-      noAuthErrorMessage: 'Unfortunately submitting questions and answers is reserved for account members in order to control the quality of technical information being distributed. ' + 
+      noAuthErrorMessage: 'Submitting questions and answers is reserved for account members only. We do this in order to control the quality of technical information being distributed. ' + 
       'We understand you see this alot, and if this is a deal breaker we hope you will still find entertainment and useful knowledge on our website. No hard feelings, which is a great song that would better ' +
       ' the human condition itself, please have a listen.'
    }
@@ -38,18 +39,15 @@ class Forum extends Component {
       this.collapsibleInstance.destroy()     
    }
 
-   //TODO:
+   //TODO: IMPLEMENTED REDIRECT TO SIGN IN
    handleErrorModalClose = () => {
-      console.log('handleErrorModalClose - Conditionally destory instance')
       //this.modalInstance.destroy()
    }
 
    handleQuestion = () => {      
       if (this.context.authUser) {
-         console.log('Open Question Form')    
          this.props.history.push('/forum/ask')     
       } else {
-         // console.log('Auth Error, Redirect or Cancel')
          this.modalInstance.open()
       }
    }
@@ -57,8 +55,6 @@ class Forum extends Component {
    handleAnswer = (questionID, questionIndex) => {
       // AUTHUSERUID PASSED AS PROP BECAUSE SUBMIT ANSWER CAN'T USE contextType WITH withRouter
       if (this.context.authUser) {
-         console.log('Open Answer Form')
-         //this.props.history.push('/forum/answer')
          this.props.history.push({
             pathname: '/forum/answer',
             questionInfo: { 
@@ -67,9 +63,7 @@ class Forum extends Component {
                authUserUID: this.context.authUser.uid
             }
          })
-         
       } else {
-         // console.log('Auth Error, Redirect or Cancel')
          this.modalInstance.open()
       }      
    }
@@ -105,7 +99,6 @@ class Forum extends Component {
                      context.questions.map( (question, index) => {
                         const { id } = question
                         const data = question.data()
-                        //console.log( data )
                         return ( 
                            <li key={id}>
                               <Question 

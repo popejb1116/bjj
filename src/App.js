@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import 'materialize-css/dist/css/materialize.min.css'
-import { BrowserRouter, Route} from 'react-router-dom'
+import { BrowserRouter, Route, Redirect} from 'react-router-dom'
 import Navbar from './components/navigation/Navbar'
 import Home from './components/content/Home'
 import Forum from './components/content/forum/Forum'
@@ -10,41 +10,44 @@ import SignOut from './components/auth/SignOut'
 import ProfileEdit from './components/auth/ProfileEdit'
 import AskQuestion from './components/content/forum/AskQuestion'
 import SubmitAnswer from './components/content/forum/SubmitAnswer'
+import { AuthUserContext } from './contexts/AuthUserContext'
+import NoAuthNotAllowed from './components/auth/NoAuthNotAllowed'
 
-
-//TODO: PROTECT ROUTES ask, answer, profile
+//TODO: PROTECT ROUTES profile
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <BrowserRouter>
-          <div className="router">
-            <Navbar />
-            <Route exact path="/" component={Home} />
-            <Route exact path="/forum" component={Forum} />
-            
-            {/* <Route path="/forum/ask" component={AskQuestion} />
-            <Route path="/forum/reply" component={SubmitReply} />
-            ADD AUTH CHECK  */}
-            <Route path="/forum/ask" render={ () => {
-               return <AskQuestion />
-            }} />
-            <Route path="/forum/answer" render={ () => {
-               return <SubmitAnswer />
-            }} />
 
-            <Route path="/signin" component={SignIn} />
-            <Route path="/signup" component={SignUp} />
-            <Route path="/signout" component={SignOut} />
-            
-            {/* PROTECT THIS PATH ALSO */}
-            <Route path="/profile" component={ProfileEdit} />
-            
-          </div>          
-        </BrowserRouter>        
-      </div>
-    )
-  }
+   static contextType = AuthUserContext
+
+   render() {
+      return (
+         <div className="App">
+            <BrowserRouter>
+               <div className="router">
+                  <Navbar />
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/forum" component={Forum} />
+                  <Route path="/forum/ask" render={() => {
+                     return this.context.authUser ? 
+                        (<AskQuestion />) : (<NoAuthNotAllowed />)
+                  }} />
+                  <Route path="/forum/answer" render={() => {
+                     return this.context.authUser ? 
+                        (<SubmitAnswer />) : (<NoAuthNotAllowed />)
+                  }} />
+                  <Route path="/signin" component={SignIn} />
+                  <Route path="/signup" component={SignUp} />
+                  <Route path="/signout" component={SignOut} />
+                  <Route path="/profile" component={ProfileEdit} />
+                  {/* <Route path="/profile" render={() =>{
+                     return this.context.authUser ? 
+                     (<ProfileEdit />) : (<NoAuthNotAllowed />)
+                  }} /> */}
+
+               </div>          
+            </BrowserRouter>        
+         </div>
+      )
+   }
 }
 
 export default App;

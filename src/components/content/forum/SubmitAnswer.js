@@ -23,11 +23,9 @@ class SubmitAnswer extends Component {
       try {
 
          // GET AUTH USER INITIALS FOR SUBSEQUENT POST
-         //const userDoc = await firestore.collection('users').doc(this.context.authUser.uid.toString()).get()
          const userDoc = await firestore.collection('users').doc(authUserUID.toString()).get()
          const authorLabel = userDoc.data().firstName + ' ' + userDoc.data().lastName[0] + '.'
 
-         // TODO: authorID ->  authorLabel
          // POST ANSWER TO FIRESTORE
          const answerDoc = await firestore.collection('forumAnswers').doc()
          await answerDoc.set({

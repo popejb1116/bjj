@@ -3,6 +3,7 @@ import { Statement, Info } from './StyledComponents'
 
 const Answer = props => {  
    const { answerData } = props
+   // CONVERT FIREBASE TIMESTAMP TO JS DATE THEN PARSE, timestamp IS OBJECT TYPE DATE
    const timestamp = answerData.answeredAt.toDate()
    const date = timestamp.toLocaleDateString()
    const time = timestamp.toLocaleTimeString()
