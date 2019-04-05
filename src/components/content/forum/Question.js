@@ -26,7 +26,7 @@ const Question = props => {
             <AnswerOption>
                <div 
                   className="btn z-depth-0"
-                  onClick={handleAnswer}
+                  onClick={() => handleAnswer(questionID, instanceIndex)}
                   >Answer
                </div>
             </AnswerOption>

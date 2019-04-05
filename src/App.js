@@ -14,8 +14,6 @@ import AskQuestion from './components/content/forum/AskQuestion'
 import SubmitAnswer from './components/content/forum/SubmitAnswer'
 
 
-import SubmitReply from './components/content/forum/SubmitReply'
-
 //TODO: PROTECT ROUTES ask, answer, profile
 class App extends Component {
   render() {

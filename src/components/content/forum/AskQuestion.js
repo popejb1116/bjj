@@ -20,33 +20,32 @@ class AskQuestion extends Component {
       })
    }
 
+   //TODO: authorID -> authorLabel
    onSubmit = async e => {
-      console.log('1 - onSubmit called')
+      
       e.preventDefault()
-
-      console.log('2 - pre doc set')
+      
       try {
 
          // GET AUTH USER INITIALS FOR SUBSEQUENT POST
          const userDoc = await firestore.collection('users').doc(this.context.authUser.uid.toString()).get()
          const authorLabel = userDoc.data().firstName + ' ' + userDoc.data().lastName[0] + '.'
-         console.log('3.1 pre question call')
 
          // POST QUESTION TO FIRESTORE
-         const doc = await firestore.collection('discussionQuestions').doc()
+         const doc = await firestore.collection('forumQuestions').doc()
          await doc.set({
             question: this.state.question,
             askedAt: new Date(),
             authorID: authorLabel
          })
-         console.log('4 - post doc set')
+         
          this.setState({redirectToForum: true})
          window.location.reload(true)
       } catch (error) {
-         console.log('4 alt - error')
+         
       }
 
-      console.log('5 - LAST')
+      
    }
 
    onCancel = () => {

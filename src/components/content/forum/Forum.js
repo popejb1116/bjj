@@ -53,10 +53,20 @@ class Forum extends Component {
       }
    }
 
-   handleAnswer = () => {
+   handleAnswer = (questionID, questionIndex) => {
+      // AUTHUSERUID PASSED AS PROP BECAUSE SUBMIT ANSWER CAN'T USE contextType WITH withRouter
       if (this.context.authUser) {
          console.log('Open Answer Form')
-         this.props.history.push('/forum/answer')
+         //this.props.history.push('/forum/answer')
+         this.props.history.push({
+            pathname: '/forum/answer',
+            questionInfo: { 
+               questionID: questionID,
+               questionIndex: questionIndex,
+               authUserUID: this.context.authUser.uid
+            }
+         })
+         
       } else {
          // console.log('Auth Error, Redirect or Cancel')
          this.modalInstance.open()
