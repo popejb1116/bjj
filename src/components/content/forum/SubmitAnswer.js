@@ -19,9 +19,7 @@ class SubmitAnswer extends Component {
 
    onSubmit = async e => {
       e.preventDefault()
-
       const { questionID, questionIndex, authUserUID } = this.props.location.questionInfo
-
       try {
 
          // GET AUTH USER INITIALS FOR SUBSEQUENT POST

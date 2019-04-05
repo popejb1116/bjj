@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
-//import 'materialize-css/dist/js/materialize'
+import React, { Component } from 'react'
 import 'materialize-css/dist/css/materialize.min.css'
 import { BrowserRouter, Route} from 'react-router-dom'
 import Navbar from './components/navigation/Navbar'
-
 import Home from './components/content/Home'
 import Forum from './components/content/forum/Forum'
 import SignIn from './components/auth/SignIn'
@@ -41,6 +39,7 @@ class App extends Component {
             
             {/* PROTECT THIS PATH ALSO */}
             <Route path="/profile" component={ProfileEdit} />
+            
           </div>          
         </BrowserRouter>        
       </div>

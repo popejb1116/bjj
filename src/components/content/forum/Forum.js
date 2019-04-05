@@ -125,19 +125,3 @@ class Forum extends Component {
 }
 
 export default Forum
-
-
-{/* <ul className="collapsible" id="forum-discussions">
-   <li>
-      <div className="collapsible-header">First<i className="material-icons right">reply</i></div>
-      <div className="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-   </li>
-   <li>
-      <div className="collapsible-header">Second</div>
-      <div className="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-   </li>
-   <li>
-      <div className="collapsible-header">Third</div>
-      <div className="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-   </li>
-</ul> */}
