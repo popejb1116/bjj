@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { auth, firestore } from '../../config/fbConfig'
 import { AuthUserContext } from '../../contexts/AuthUserContext'
 import { Form, FormHeader, FormBody, FormBodyAnchor, FormButton, RadioGroup, RadioTitle, RadioOptions, FormFooter, FormCancel} from './StyledComponents'
+import { Redirect } from 'react-router-dom'
 
 class ProfileEdit extends Component {
 
@@ -11,7 +12,8 @@ class ProfileEdit extends Component {
       firstName: this.context.userProfile.firstName,
       lastName: this.context.userProfile.lastName,
       primaryDiscipline: this.context.userProfile.primaryDiscipline,
-      yearsExperience: this.context.userProfile.yearsExperience
+      yearsExperience: this.context.userProfile.yearsExperience,
+      redirectToForum: false
    }
 
    handleChange = event => {
@@ -42,16 +44,14 @@ class ProfileEdit extends Component {
          }
       )
       .then(() => {
-         console.log('Redirect from /profile to /forum')
-         this.props.history.push('/forum')         
+         this.setState({redirectToForum: true})      
       })
    }
 
    render(){     
       const {firstName, lastName, primaryDiscipline, yearsExperience } = this.state
-
-      return (
-         <div className="row">
+      return this.state.redirectToForum ? (<Redirect to="/forum" />) : 
+         (  <div className="row">
             <div className="col s12 m8 offset-m2 l8 offset-l2">
                <Form>
                   <FormHeader>Edit Your Profile Info</FormHeader>

@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom'
 import { AuthUserContext } from '../../contexts/AuthUserContext'
 
+
 const SignedInLinks = () => {
    return (
       <Fragment>
@@ -11,19 +12,16 @@ const SignedInLinks = () => {
          </li>
 
          <AuthUserContext.Consumer>
-            { context => (               
+            { context => (
                <li>
                   <Link to="/profile">
-                     <div className="chip">                     
-                        {context.userProfile.firstName[0] + context.userProfile.lastName[0]}
-                     </div>
+                     <div className="chip">{context.userProfile.firstName[0] + context.userProfile.lastName[0]}</div>
                   </Link>
                </li>
             )}
          </AuthUserContext.Consumer>
 
       </Fragment>
-
    )
 }
 

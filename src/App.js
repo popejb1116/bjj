@@ -13,7 +13,6 @@ import SubmitAnswer from './components/content/forum/SubmitAnswer'
 import { AuthUserContext } from './contexts/AuthUserContext'
 import NoAuthNotAllowed from './components/auth/NoAuthNotAllowed'
 
-//TODO: PROTECT ROUTES profile
 class App extends Component {
 
    static contextType = AuthUserContext
@@ -37,12 +36,10 @@ class App extends Component {
                   <Route path="/signin" component={SignIn} />
                   <Route path="/signup" component={SignUp} />
                   <Route path="/signout" component={SignOut} />
-                  <Route path="/profile" component={ProfileEdit} />
-                  {/* <Route path="/profile" render={() =>{
+                  <Route path="/profile" render={() => {
                      return this.context.authUser ? 
                      (<ProfileEdit />) : (<NoAuthNotAllowed />)
-                  }} /> */}
-
+                  }} />
                </div>          
             </BrowserRouter>        
          </div>
