@@ -9,7 +9,7 @@ const SignOut = props => {
     })
     .catch(err => {
       console.log('SignOut Error')
-      console.log(err)
+      console.log(err.message)
     })
 
     return (<div></div>)
