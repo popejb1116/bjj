@@ -22,15 +22,14 @@ exports.newUserJoined = functions.auth.user().onCreate( user => {
       }
 
       return admin.firestore().collection('notifications').add(notification)
-      // .then(() => {
-      //    console.log('notification add')
-      // })
+     
    })
    .then(() => {
       console.log('notification add... maybe???')
+      //FIREBASE 
+      return true
    })
    .catch(error => {
       console.log('newUser ERROR: ' + error)
-   })
-   
+   })   
 })
