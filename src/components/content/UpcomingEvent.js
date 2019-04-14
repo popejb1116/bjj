@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import mmaIcon from '../../images/event-mma-w.png'
 import boxingIcon from '../../images/event-boxing-w.png'
 import bjjIcon from '../../images/event-bjj-w.png'
-
-
 import { Card } from './StyledComponents'
 
 class UpcomingEvent extends Component {
@@ -24,9 +22,9 @@ class UpcomingEvent extends Component {
         <div className="card">
           <div className="card-image">
             <img src={displayIcon} />
-            <span className="card-title">{title}</span>
           </div>          
-         <div className="card-content">            
+         <div className="card-content">           
+            <span className="card-title">{title}</span> 
             <p>{description.slice(0,70)+'...'}</p>
          </div>          
         </div>
