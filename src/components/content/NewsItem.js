@@ -27,9 +27,9 @@ const NewsItem = props => {
       <div className="card">
         <div className="card-image">
           <img src={displayPic} />  
-          <span className="card-title">{title}</span>            
         </div>        
-          <div className="card-content">            
+          <div className="card-content">     
+            <span className="card-title">{title}</span>                   
             <p>{description.slice(0,70)+'...'}</p>
           </div>        
       </div>

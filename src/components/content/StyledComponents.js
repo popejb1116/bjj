@@ -25,7 +25,7 @@ export const Card = styled.div`
    }
 
   .card-title{
-      color: #ff1744 !important;
+      color: white !important;
       font-size: 1.5rem;
       font-weight: bold;
   }
