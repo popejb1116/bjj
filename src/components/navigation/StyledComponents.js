@@ -33,9 +33,13 @@ export const NavLinks = styled.ul`
 
 export const MobileNavLinks = styled.ul`
    background-color: #ff1744 !important;
+   li{
+     margin-top: 2rem; 
+   }
    a{
       color: white !important;
       background-color: transparent !important;
+      font-size: 2rem !important;
    }
    .chip{
       color: #ff1744 !important;
